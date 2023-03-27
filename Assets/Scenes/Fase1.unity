@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.1727712, g: 0.21589617, b: 0.29783094, a: 1}
+  m_IndirectSpecularColor: {r: 0.17277092, g: 0.21589568, b: 0.29783013, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -104,7 +104,7 @@ NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    serializedVersion: 2
+    serializedVersion: 3
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 2
@@ -117,7 +117,7 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    buildHeightMesh: 0
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -227,6 +227,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1621578567071534816, guid: 063de73937b958149b29cf8bfccea0f2, type: 3}
@@ -294,12 +295,16 @@ PrefabInstance:
       value: CriadordeInimigosCentro
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063de73937b958149b29cf8bfccea0f2, type: 3}
 --- !u!1001 &1346057067
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1621578567071534816, guid: 063de73937b958149b29cf8bfccea0f2, type: 3}
@@ -367,12 +372,16 @@ PrefabInstance:
       value: CriadordeInimigosEsquerda
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063de73937b958149b29cf8bfccea0f2, type: 3}
 --- !u!1001 &1696971120
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1621578567071534816, guid: 063de73937b958149b29cf8bfccea0f2, type: 3}
@@ -440,6 +449,9 @@ PrefabInstance:
       value: CriadordeInimigosDireita
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063de73937b958149b29cf8bfccea0f2, type: 3}
 --- !u!1 &2037592080
 GameObject:
@@ -481,9 +493,17 @@ Camera:
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0.26
@@ -530,6 +550,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6519622370242728225, guid: f87e4948fdc307a4a9e26cae5171e557, type: 3}
@@ -581,12 +602,16 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f87e4948fdc307a4a9e26cae5171e557, type: 3}
 --- !u!1001 &7222594707639769101
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
@@ -595,11 +620,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.1
+      value: 0.48280156
       objectReference: {fileID: 0}
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.1
+      value: 0.3403842
       objectReference: {fileID: 0}
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_LocalScale.z
@@ -607,11 +632,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -89.1
+      value: -88.3375
       objectReference: {fileID: 0}
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -120.4
+      value: -121.8259
       objectReference: {fileID: 0}
     - target: {fileID: 7183653600367703088, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -702,4 +727,7 @@ PrefabInstance:
       value: Nave
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
