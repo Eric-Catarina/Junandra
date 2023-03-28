@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class bala : MonoBehaviour
 {
-    public Rigidbody2D rb;
+   
     public float velocidade;
+    private Vector3 posicao;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();        
+        posicao= this.transform.position;
+        InvokeRepeating("movimenta",0,1/50f);
+        Destroy(this.gameObject,3);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        rb.velocity = transform.forward* velocidade;
+    void movimenta(){
+        posicao.z+=velocidade*Time.deltaTime;
+       this.transform.position=posicao;
     }
 }

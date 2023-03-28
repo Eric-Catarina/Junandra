@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestruirInimigo : MonoBehaviour
+public class Inimigo : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
+       // rb = GetComponent<Rigidbody2D>(); 
         Destroy(gameObject, 3);        
     }
 
@@ -16,5 +16,10 @@ public class DestruirInimigo : MonoBehaviour
     void Update()
     {
         
+    }
+   void OnTriggerEnter(Collider other){
+    Destroy(other.gameObject);
+    Destroy(gameObject);
+
     }
 }

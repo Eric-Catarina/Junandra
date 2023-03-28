@@ -7,6 +7,7 @@ TagManager:
   - PLayer
   - bala
   - arma
+  - inimigos
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - tiro
+  - inimigo
   - 
   - 
   - 

@@ -13,6 +13,6 @@ public class Fase1loop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        mr.material.mainTextureOffset += new Vector2(speed* Time.deltaTime, 0);
+        mr.material.mainTextureOffset += new Vector2(-speed* Time.deltaTime, 0);
     }
 }
