@@ -3,9 +3,7 @@ guid: ec5a2cfc3bd3d63469abba36bf1468d4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - armaDaNave: {fileID: 4057596913537147065, guid: bebfbf5b6ccb5b940921ff8aa9cd33eb, type: 3}
-  - bala: {fileID: 6230782392533341836, guid: a7ef0130e62679c4d8aa13d9f8bf681b, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
