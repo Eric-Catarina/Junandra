@@ -1,55 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5;
-    public Transform armaDaNave;
-    public GameObject bala;
-    // Start is called before the first frame update
+    [SerializeField]
+    private float speed = 600;
+    
+    [SerializeField]
+    private Transform armaDaNave;
+    
+    [SerializeField]
+    private GameObject bala;
 
+    [SerializeField] private Rigidbody rb;
+
+    private void Start()
+    {
+        rb = this.GetComponent<Rigidbody>();
+    }
 
     void FixedUpdate()
     {
+        rb.velocity = Vector3.zero;
+
         float horizontalPlayerInput = Input.GetAxisRaw("Horizontal");
         float verticalPlayerInput = Input.GetAxisRaw("Vertical");
-
-
-        Debug.Log("Input horizontal: " + horizontalPlayerInput +
-                  "     Input vertical: " + verticalPlayerInput);
-
-
-        Rigidbody rb = this.GetComponent<Rigidbody>();
-
         
-        if (horizontalPlayerInput != 0)
+        if (horizontalPlayerInput != 0 || verticalPlayerInput != 0)
         {
-            MoveHorizontal();
-        }
-
-        if (verticalPlayerInput !=0)
-        {
-            MoveVertical();
+            MoveShip(horizontalPlayerInput, verticalPlayerInput);
         }
         
-        void  MoveHorizontal(){
-
-            transform.Translate(new Vector3(horizontalPlayerInput,0,0) *speed );
-
-        }
-
-        void MoveVertical(){
-            transform.Translate(new Vector3(0,-verticalPlayerInput,0) *speed );
-
-        }
-
-
-
-         if (Input.GetKey("space"))
+        if (Input.GetKey("space"))
         {
             Instantiate(bala, armaDaNave.position, armaDaNave.rotation);
         }
-        
     }   
+    void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput){
+        rb.velocity = (new Vector3(horizontalPlayerInput,verticalPlayerInput,0) * (speed * Time.fixedDeltaTime));
+        
+    }
 }
