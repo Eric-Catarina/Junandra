@@ -9,10 +9,8 @@ public class EnemyGenerator : MonoBehaviour
     {
          Transform[] allChildren = GetComponentsInChildren<Transform>();
 
-            Debug.Log(allChildren[0].gameObject.transform.position.x);
-            Debug.Log(allChildren[1].gameObject.transform.position.x);
-
-
+        Debug.Log(allChildren[0].gameObject.transform.position.x);
+        Debug.Log(allChildren[1].gameObject.transform.position.x);
     }
 
     // Update is called once per frame
