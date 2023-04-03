@@ -11,9 +11,8 @@ public class BulletMovement : MonoBehaviour
     {
         Destroy(this.gameObject, 3);
     }
-
     void FixedUpdate(){
-
+        MoveBullet();
     }
 
     void MoveBullet(){
