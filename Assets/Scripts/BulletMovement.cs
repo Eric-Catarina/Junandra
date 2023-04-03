@@ -6,13 +6,20 @@ public class BulletMovement : MonoBehaviour
 {
    
    [SerializeField]
-    private float bulletSpeed = 10.0f;
+    private float bulletSpeed = 0.5f;
+
+    [SerializeField]
+    private float friction = 0.006f;
     void Start()
     {
         Destroy(this.gameObject, 3);
     }
     void FixedUpdate(){
         MoveBullet();
+        if (bulletSpeed < 0.005f){
+            Destroy(gameObject);
+        }
+        bulletSpeed-= friction;
     }
 
     void MoveBullet(){
