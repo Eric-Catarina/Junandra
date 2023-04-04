@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
+    [SerializeField]
+    private GameObject batataWanderley;
     private GameObject scoreManager;
 
     private ScoreManager scoreManagerScript; 
@@ -19,9 +20,17 @@ public class EnemyMovement : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collider){
-        Debug.Log("Atingiu o pau");
+        Die();
+    }
+
+    private void Die(){
+        SpawnItem();
         scoreManagerScript.AddScore(1);
         Destroy(gameObject);
+    }
+
+    private void SpawnItem(){
+        Instantiate(batataWanderley, transform.position, transform.rotation);
     }
 
     // Update is called once per frame

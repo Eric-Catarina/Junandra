@@ -15,12 +15,6 @@ public class ScoreManager : MonoBehaviour
         SetScore(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private float UpdateScoreTMP(){
         scoreTMP.text = score.ToString();
         return score;
