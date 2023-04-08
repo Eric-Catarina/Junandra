@@ -16,6 +16,7 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
 
+    [SerializeField] private float speedModifier = 1.05f;
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -38,8 +39,14 @@ public class PlayerInput : MonoBehaviour
             Instantiate(bala, armaDaNave.position, armaDaNave.rotation);
         }
     }   
-    void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput){
-        rb.velocity = (new Vector3(horizontalPlayerInput,verticalPlayerInput,0) * (speed * Time.fixedDeltaTime));
-        
+    void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput)
+    {
+        rb.velocity = (new Vector3(horizontalPlayerInput, verticalPlayerInput, 0) * (speed * Time.fixedDeltaTime));
+    }
+
+    
+    public void IncreaseSpeed()
+    {
+        speed *= speedModifier;
     }
 }

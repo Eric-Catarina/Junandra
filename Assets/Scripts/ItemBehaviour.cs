@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 
 public class ItemBehaviour : MonoBehaviour
 {
-    [SerializeField] 
-    private float movement_speed = 0.5f;
+    [SerializeField] private float movement_speed = 0.5f;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * movement_speed);        
+        transform.Translate(Vector3.down * movement_speed);
+    }
+
+    void OnTriggerEnter(Collider collision)
+    {
+        if (!collision.gameObject.TryGetComponent(out PlayerInput playerInput))
+        {
+            return;
+        }
+        playerInput.IncreaseSpeed();
+        
+        Destroy(gameObject);
     }
 }
