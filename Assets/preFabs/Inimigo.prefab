@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3588421877931784563}
   - component: {fileID: -8888475861325752961}
   - component: {fileID: -7159339667706945232}
+  - component: {fileID: -7168904945060709108}
   m_Layer: 7
   m_Name: Inimigo
   m_TagString: inimigos
@@ -130,3 +131,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-7168904945060709108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040894473392378215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ffcf8de4ce4e5149856b80ad242c1c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
