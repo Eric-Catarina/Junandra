@@ -36,6 +36,6 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * movement_speed);
+        transform.Translate(Vector3.down * movement_speed);
     }
 }
