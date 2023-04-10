@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44949da4da8a4a3b9c1a6e85e95965e1, type: 3}
   m_Name: Down
   m_EditorClassIdentifier: 
-  offset: {x: 0, y: 0}
+  offset: {x: 10, y: 0}
