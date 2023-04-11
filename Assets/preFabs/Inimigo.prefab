@@ -114,7 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batataWanderley: {fileID: 1396682609070937841, guid: 36afec19b59ce484b9426464f29d6b5c, type: 3}
-  movement_speed: 0.04
+  movement_speed: 0.01
 --- !u!54 &-7159339667706945232
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 7222594708988629973}
   - component: {fileID: 3097293824515724396}
   - component: {fileID: 5796201091296458568}
+  - component: {fileID: -5730370171356273759}
   m_Layer: 0
   m_Name: Nave
   m_TagString: Untagged
@@ -216,3 +217,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 17.995594, y: 10.856707, z: 3.3936796}
   m_Center: {x: -0.01781416, y: -10.5704975, z: 3.1889405}
+--- !u!114 &-5730370171356273759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564541382722793098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589a0e44b789065448f72505d4a9898d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  fireRate: 6
+  spread: 1
+  range: 1000
+  timeBetweenShots: 10
+  bulletsPerTap: 1
+  allowButtonHold: 1
+  bullet: {fileID: 6230782392533341836, guid: a7ef0130e62679c4d8aa13d9f8bf681b, type: 3}
+  attackPoint: {fileID: 7222594708061218824}
+  whatIsEnemy:
+    serializedVersion: 2
+    m_Bits: 0
+  text: {fileID: 3956174744331850865, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}

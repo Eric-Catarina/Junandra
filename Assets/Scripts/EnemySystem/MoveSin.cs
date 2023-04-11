@@ -18,7 +18,5 @@ public class MoveSin : MonoBehaviour
         pos.x = sinCenterX + sin;
 
         transform.position = pos;
-
-        Debug.Log("Posição: " + transform.position + ", " + "Centro do Seno: " + sinCenterX);
     }
 }

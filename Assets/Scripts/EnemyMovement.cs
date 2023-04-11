@@ -5,9 +5,10 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField]
-    private GameObject batataWanderley;
+    private GameObject item;
     private GameObject scoreManager;
 
+    private bool estaMorto = false;
     private ScoreManager scoreManagerScript; 
 
 
@@ -24,13 +25,16 @@ public class EnemyMovement : MonoBehaviour
     }
 
     private void Die(){
-        SpawnItem();
-        scoreManagerScript.AddScore(1);
-        Destroy(gameObject);
+        if (!estaMorto){
+            SpawnItem();
+            scoreManagerScript.AddScore(1);
+            Destroy(gameObject);
+        }
+        estaMorto = true;
     }
 
     private void SpawnItem(){
-        Instantiate(batataWanderley, transform.position, transform.rotation);
+        Instantiate(item, transform.position, transform.rotation);
     }
 
     // Update is called once per frame
