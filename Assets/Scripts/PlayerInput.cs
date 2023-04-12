@@ -8,18 +8,15 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private float speed = 600;
     
-    [SerializeField]
-    private Transform armaDaNave;
-    
-    [SerializeField]
-    private GameObject bala;
-
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float speedModifier = 1.05f;
+
+    private GunSystem gunSystem;
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        gunSystem = GetComponent<GunSystem>();
     }
 
     void FixedUpdate()
@@ -34,9 +31,14 @@ public class PlayerInput : MonoBehaviour
             MoveShip(horizontalPlayerInput, verticalPlayerInput);
         }
         
-        if (Input.GetKey("space"))
+        if(gunSystem.allowButtonHold)
         {
-            Instantiate(bala, armaDaNave.position, armaDaNave.rotation);
+            gunSystem.tryingToShoot = Input.GetKey("space");
+        }
+
+        else
+        {
+            gunSystem.tryingToShoot = Input.GetKeyDown("space");
         }
     }   
     void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput)

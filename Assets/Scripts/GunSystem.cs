@@ -11,30 +11,24 @@ public class GunSystem : MonoBehaviour
     int bulletsShot;
 
     //bools 
-    bool shooting, readyToShoot;
-
+    public bool tryingToShoot, readyToShoot;
     public GameObject bullet;
     //Reference
     public Transform attackPoint;
-    public LayerMask whatIsEnemy;
-
-    public TextMeshProUGUI text;
 
     private void Awake()
     {
         readyToShoot = true;
     }
-    private void Update()
-    {
-        MyInput();
+    
+    void FixedUpdate(){
+        Shooting();
     }
-    private void MyInput()
-    {
-        if (allowButtonHold) shooting = Input.GetKey(KeyCode.Mouse0);
-        else shooting = Input.GetKeyDown(KeyCode.Mouse0);
 
+    public void Shooting()
+    {   
         //Shoot
-        if (readyToShoot && shooting){
+        if (readyToShoot && tryingToShoot){
             bulletsShot = bulletsPerTap;
             Shoot();
         }
@@ -62,6 +56,15 @@ public class GunSystem : MonoBehaviour
     private void ResetShot()
     {
         readyToShoot = true;
+    }
+
+    private bool TryShoot(){
+            if (!readyToShoot || !tryingToShoot){
+                return false;
+            }
+            bulletsShot = bulletsPerTap;
+            Shoot();
+            return true;
     }
 
 }
