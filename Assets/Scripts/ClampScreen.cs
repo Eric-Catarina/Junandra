@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class ClampScreen : MonoBehaviour
 {
-    private Vector3 pos;
+    private Vector3 playerPosition;
     // Start is called before the first frame update
-
+    //-16.8
+    //-10
 
     void Start()
     {
-        pos = transform.position;
+        playerPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Mathf.Clamp();
+        playerPosition = transform.position;
 
-        
+        playerPosition.x =  Mathf.Clamp(playerPosition.x, -16.8f, 16.8f);
+        playerPosition.y =  Mathf.Clamp(playerPosition.y, -10, 8);
+
+        transform.position = playerPosition;
+
     }
 }

@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 3097293824515724396}
   - component: {fileID: 5796201091296458568}
   - component: {fileID: -5730370171356273759}
+  - component: {fileID: -3963007638026076131}
   m_Layer: 0
   m_Name: Nave
   m_TagString: Untagged
@@ -200,8 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
-  armaDaNave: {fileID: 0}
-  bala: {fileID: 0}
   rb: {fileID: 0}
   speedModifier: 1.05
 --- !u!65 &5796201091296458568
@@ -236,9 +235,19 @@ MonoBehaviour:
   timeBetweenShots: 10
   bulletsPerTap: 1
   allowButtonHold: 1
+  tryingToShoot: 0
+  readyToShoot: 0
   bullet: {fileID: 6230782392533341836, guid: a7ef0130e62679c4d8aa13d9f8bf681b, type: 3}
   attackPoint: {fileID: 7222594708061218824}
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 0
-  text: {fileID: 3956174744331850865, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
+--- !u!114 &-3963007638026076131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564541382722793098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3e693716424ac4bbcf6ce30d35a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
