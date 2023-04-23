@@ -16,6 +16,17 @@ public class GunSystem : MonoBehaviour
     //Reference
     public Transform attackPoint;
 
+    //Bullet error margin
+    [SerializeField]
+    private float MinXError = -0.1f;
+    [SerializeField]
+    private float MaxXError = 0.1f;
+
+    [SerializeField]
+    private float bulletErrorX;
+
+    private Vector3 bulletSpawnPoint;
+
     private void Awake()
     {
         readyToShoot = true;
@@ -41,10 +52,15 @@ public class GunSystem : MonoBehaviour
         float x = Random.Range(-spread, spread);
         float y = Random.Range(-spread, spread);
 
+        // Bullet error margin
+        bulletErrorX = Random.Range(MinXError, MaxXError);
+
+        bulletSpawnPoint = new Vector3(attackPoint.position.x + bulletErrorX, attackPoint.position.y, attackPoint.position.z);
+
         //Calculate Direction with Spread
         Vector3 direction = Vector3.up;
 
-        Instantiate(bullet, attackPoint.position, attackPoint.rotation);
+        Instantiate(bullet, bulletSpawnPoint, attackPoint.rotation);
 
         bulletsShot--;
 

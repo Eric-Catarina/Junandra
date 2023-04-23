@@ -20,9 +20,11 @@ public class EnemyMovement : MonoBehaviour
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
     }
 
-    void OnCollisionEnter(Collision collider){
-        Die();
+    void OnTriggerEnter(Collider collider){
+            Die();
+        
     }
+
 
     private void Die(){
         if (!estaMorto){

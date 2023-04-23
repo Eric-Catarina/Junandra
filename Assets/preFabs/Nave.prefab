@@ -25,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7222594708061218828}
-  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 0.010002136, y: -16.559998, z: 0}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: -6.18, z: 2}
   m_LocalScale: {x: 1.138809, y: 1.4072087, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7183653600367703088}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: 0, z: 180}
 --- !u!33 &7222594708061218825
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -113,15 +113,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7564541382722793098}
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: -94, y: -113.1, z: 610.22}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7222594708061218824}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 180}
 --- !u!33 &6061472874182507413
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -150,7 +150,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: aee413fe7a523b741a86b8ee26fb4b11, type: 2}
+  - {fileID: 2100000, guid: 24658ef006b37e94583811901197b4fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -200,8 +200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec5a2cfc3bd3d63469abba36bf1468d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 60
-  rb: {fileID: 0}
+  speed: 15
+  rb: {fileID: 7222594708988629973}
   speedModifier: 1.05
 --- !u!65 &5796201091296458568
 BoxCollider:
@@ -229,16 +229,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  fireRate: 6
+  fireRate: 15
   spread: 1
   range: 1000
-  timeBetweenShots: 10
+  timeBetweenShots: 0
   bulletsPerTap: 1
   allowButtonHold: 1
   tryingToShoot: 0
   readyToShoot: 0
-  bullet: {fileID: 6230782392533341836, guid: a7ef0130e62679c4d8aa13d9f8bf681b, type: 3}
+  bullet: {fileID: 484898785920674437, guid: 2ffcfcc8c450a764588923fac285255a, type: 3}
   attackPoint: {fileID: 7222594708061218824}
+  MinXError: -1.5
+  MaxXError: 1.5
+  bulletErrorX: 0
 --- !u!114 &-3963007638026076131
 MonoBehaviour:
   m_ObjectHideFlags: 0

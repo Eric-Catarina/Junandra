@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 8040894473392378209}
   - component: {fileID: 3588421877931784563}
   - component: {fileID: -8888475861325752961}
-  - component: {fileID: -7159339667706945232}
   - component: {fileID: -7168904945060709108}
+  - component: {fileID: -3902321988731803997}
   m_Layer: 7
   m_Name: Inimigo
   m_TagString: inimigos
@@ -115,22 +115,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 1396682609070937841, guid: 36afec19b59ce484b9426464f29d6b5c, type: 3}
   movement_speed: 0.01
---- !u!54 &-7159339667706945232
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8040894473392378215}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &-7168904945060709108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +127,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ffcf8de4ce4e5149856b80ad242c1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &-3902321988731803997
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8040894473392378215}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

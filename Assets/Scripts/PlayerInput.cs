@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 600;
+    private float speed = 60;
     
     [SerializeField] private Rigidbody rb;
 
@@ -28,6 +28,9 @@ public class PlayerInput : MonoBehaviour
         
         if (horizontalPlayerInput != 0 || verticalPlayerInput != 0)
         {
+            Debug.Log("Player is moving");
+            Debug.Log("Horizontal: " + horizontalPlayerInput);
+            Debug.Log("Vertical: " + verticalPlayerInput);
             MoveShip(horizontalPlayerInput, verticalPlayerInput);
         }
         
@@ -43,7 +46,7 @@ public class PlayerInput : MonoBehaviour
     }   
     void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput)
     {
-        rb.velocity = (new Vector3(horizontalPlayerInput, verticalPlayerInput, 0) * (speed * Time.fixedDeltaTime));
+        transform.Translate(new Vector3(-horizontalPlayerInput, verticalPlayerInput, 0) * (speed * Time.fixedDeltaTime));
     }
 
     

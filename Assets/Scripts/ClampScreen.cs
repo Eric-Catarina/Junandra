@@ -19,8 +19,8 @@ public class ClampScreen : MonoBehaviour
     {
         playerPosition = transform.position;
 
-        playerPosition.x =  Mathf.Clamp(playerPosition.x, -16.8f, 16.8f);
-        playerPosition.y =  Mathf.Clamp(playerPosition.y, -10, 8);
+        playerPosition.x =  Mathf.Clamp(playerPosition.x, -15.5f, 15.5f);
+        playerPosition.y =  Mathf.Clamp(playerPosition.y, -5.7f, 11);
 
         transform.position = playerPosition;
 
