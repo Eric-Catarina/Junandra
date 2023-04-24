@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private float speed = 60;
     
-    [SerializeField] private Rigidbody rb;
+    private Rigidbody rb;
 
     [SerializeField] private float speedModifier = 1.05f;
 
@@ -22,15 +22,11 @@ public class PlayerInput : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = Vector3.zero;
-
         float horizontalPlayerInput = Input.GetAxisRaw("Horizontal");
         float verticalPlayerInput = Input.GetAxisRaw("Vertical");
         
         if (horizontalPlayerInput != 0 || verticalPlayerInput != 0)
         {
-            Debug.Log("Player is moving");
-            Debug.Log("Horizontal: " + horizontalPlayerInput);
-            Debug.Log("Vertical: " + verticalPlayerInput);
             MoveShip(horizontalPlayerInput, verticalPlayerInput);
         }
         
@@ -46,7 +42,7 @@ public class PlayerInput : MonoBehaviour
     }   
     void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput)
     {
-        transform.Translate(new Vector3(-horizontalPlayerInput, verticalPlayerInput, 0) * (speed * Time.fixedDeltaTime));
+        rb.velocity = (new Vector3(horizontalPlayerInput, verticalPlayerInput, 0).normalized * (speed * Time.fixedDeltaTime));
     }
 
     
