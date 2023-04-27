@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     [SerializeField]
     private GameObject item;
@@ -11,12 +11,14 @@ public class EnemyMovement : MonoBehaviour
     private bool estaMorto = false;
     private ScoreManager scoreManagerScript; 
 
+    public EnemyDefinition enemyDefinition;
 
     [SerializeField]
-    private float movement_speed = 10.0f;
+    private float movement_speed;
     // Start is called before the first frame update
     void Start()
     {
+        movement_speed = enemyDefinition.movementSpeed;
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
     }
 

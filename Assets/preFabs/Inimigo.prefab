@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 1396682609070937841, guid: 36afec19b59ce484b9426464f29d6b5c, type: 3}
+  enemyDefinition: {fileID: 11400000, guid: 6fee44a8059f75d42b9a70abe2ca5e45, type: 2}
   movement_speed: 0.03
 --- !u!114 &-7168904945060709108
 MonoBehaviour:
