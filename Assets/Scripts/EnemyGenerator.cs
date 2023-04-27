@@ -18,10 +18,7 @@ public class EnemyGenerator : MonoBehaviour
     {
         spawnPositionLimits = GetComponentsInChildren<Transform>();
         RandomizeEnemySpawnPosition();
-
     }
-
-
     void Update()
     {
         
