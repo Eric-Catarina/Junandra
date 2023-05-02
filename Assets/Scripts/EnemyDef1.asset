@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334b756d1c5d93645a27864d7a363542, type: 3}
   m_Name: EnemyDef1
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
-  movementSpeed: 0
-  movesInSin: 0
+  currentHealth: 10
+  maxHealth: 10
+  movementSpeed: 1
+  movesInSin: 1

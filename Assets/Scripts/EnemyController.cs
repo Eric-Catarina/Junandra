@@ -13,21 +13,23 @@ public class EnemyController : MonoBehaviour
 
     public EnemyDefinition enemyDefinition;
 
-    [SerializeField]
-    private float movement_speed;
-    // Start is called before the first frame update
+    private float movementSpeed;
+    private bool movesInSin;
+    private float sinCenterX;
+
     void Start()
     {
-        movement_speed = enemyDefinition.movementSpeed;
+        sinCenterX = transform.position.x;
+
+        movementSpeed = enemyDefinition.movementSpeed;
+        movesInSin = enemyDefinition.movesInSin;
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
     }
 
     void OnTriggerEnter(Collider collider){
             Die();
-        
+
     }
-
-
     private void Die(){
         if (!estaMorto){
             SpawnItem();
@@ -44,6 +46,15 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.down * movement_speed);
+        transform.position += new Vector3(0,-1,0) * movementSpeed;
+        MoveSin();
+    }
+
+    private void MoveSin(){
+        Vector2 pos = transform.position;
+        float sin = Mathf.Sin(pos.y) * 3;
+        pos.x = sinCenterX + sin;
+
+        transform.position = pos;
     }
 }
