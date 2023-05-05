@@ -35,7 +35,8 @@ public class EnemyGenerator : MonoBehaviour
     }
 
     public void SpawnEnemy(GameObject enemyPrefab){
-        Instantiate(enemy, new Vector3(randomXTransform, transform.position.y, transform.position.z), transform.rotation);
+        GameObject enemyInstance = Instantiate(enemy, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
+
         RandomizeEnemySpawnPosition();
     }
 }

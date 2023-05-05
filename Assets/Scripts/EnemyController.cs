@@ -17,14 +17,22 @@ public class EnemyController : MonoBehaviour
     private bool movesInSin;
     private float sinCenterX;
 
+    private float amplitude = 2f;
+    private float frequency = 1f;
+    private Rigidbody rb;
+
     void Start()
     {
+
+        rb = GetComponent<Rigidbody>();
         sinCenterX = transform.position.x;
 
         movementSpeed = enemyDefinition.movementSpeed;
         movesInSin = enemyDefinition.movesInSin;
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
     }
+
+    
 
     void OnTriggerEnter(Collider collider){
             Die();
@@ -43,18 +51,21 @@ public class EnemyController : MonoBehaviour
         Instantiate(item, transform.position, transform.rotation);
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void FixedUpdate()
     {
-        transform.position += new Vector3(0,-1,0) * movementSpeed;
-        MoveSin();
-    }
+        if (movesInSin)
+        {
 
-    private void MoveSin(){
-        Vector2 pos = transform.position;
-        float sin = Mathf.Sin(pos.y) * 3;
-        pos.x = sinCenterX + sin;
-
-        transform.position = pos;
+            float x = Mathf.Sin(Time.time * frequency) * amplitude;
+            float y = Mathf.Abs(Mathf.Cos(Time.time * frequency) * amplitude);
+            Vector3 direction = new Vector3(x, -y, 0f);
+            rb.velocity = direction.normalized * movementSpeed;
+           
+        }
+        else
+        {
+            rb.velocity = Vector3.down * movementSpeed;
+        }
     }
 }
