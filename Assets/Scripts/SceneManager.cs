@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static void LoadScene1()
     {
-        
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Fase1");
+    }
+    
+    public static void LoadScene2()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Fase2");
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void LoadScene0()
     {
-        
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MenuInicial");
+    }
+
+    public static void LoadSceneGameOver()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+    }
+
+    public static void QuitGame()
+    {
+        Application.Quit();
     }
 }

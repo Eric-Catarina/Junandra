@@ -17,7 +17,7 @@ public class ItemBehaviour : MonoBehaviour
         float randomNumber = RollRandomNumber();
 
         // 30% chance of activating player bubble shield
-        if (randomNumber < 100)
+        if (randomNumber < 30)
         {
             collision.gameObject.GetComponent<PlayerController>().ActivateBubbleShield();
             Debug.Log("Bubble shield activated");
