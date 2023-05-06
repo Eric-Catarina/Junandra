@@ -38,6 +38,9 @@ public class EnemyGenerator : MonoBehaviour
     }
 
     public void SpawnEnemy(GameObject enemyPrefab){
+        if(spawnRate >= 1 ){
+            spawnRate -= 0.1f;
+        }
         GameObject enemyInstance = Instantiate(enemy, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
 
         RandomizeEnemySpawnPosition();

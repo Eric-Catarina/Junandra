@@ -8,6 +8,7 @@ TagManager:
   - EnemyBullet
   - Walls
   - Enemy
+  - bala
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - PlayerBullet
   - Enemy
   - EnemyBullet
-  - 
+  - Item
   - 
   - 
   - 

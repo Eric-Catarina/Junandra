@@ -46,9 +46,7 @@ public class BulletController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        Debug.Log("Collision");
         if (collider.gameObject.CompareTag("Player") && isEnemyBullet){
-            Debug.Log("Player Hit");
             player.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
