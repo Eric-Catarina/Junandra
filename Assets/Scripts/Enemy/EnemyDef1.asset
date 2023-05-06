@@ -16,3 +16,5 @@ MonoBehaviour:
   maxHealth: 10
   movementSpeed: 5
   movesInSin: 1
+  sinFrequency: 5
+  sinAmplitude: 6

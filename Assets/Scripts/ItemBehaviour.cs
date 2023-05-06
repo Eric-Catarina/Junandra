@@ -8,10 +8,7 @@ public class ItemBehaviour : MonoBehaviour
     // Start is called before the first frame update
 
     // Update is called once per frame
-    void Update()
-    {
-        transform.Translate(Vector3.up * movement_speed);
-    }
+
 
     void OnTriggerEnter(Collider collision)
     {

@@ -11,6 +11,8 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
 
+    public float spawnRate;
+
     private float randomXTransform;
     public float x1, x2;
     float currentTime = 0;
@@ -18,14 +20,15 @@ public class EnemyGenerator : MonoBehaviour
     {
         spawnPositionLimits = GetComponentsInChildren<Transform>();
         RandomizeEnemySpawnPosition();
+        SpawnEnemy(enemy);
     }
     void Update()
     {
         
         currentTime += Time.deltaTime;
-        if (currentTime > 1){
-            currentTime = 0;
+        if (currentTime >= spawnRate){
             SpawnEnemy(enemy);
+            currentTime = 0;
         }
 
     }

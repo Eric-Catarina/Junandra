@@ -38,6 +38,7 @@ Assets/Plugins/Editor/JetBrains*
 
 # Visual Studio cache directory
 .vs/
+.vsconfig
 
 # Gradle cache directory
 .gradle/
@@ -84,4 +85,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
+*.htm
 # End of https://www.toptal.com/developers/gitignore/api/unity

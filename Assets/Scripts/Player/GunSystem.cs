@@ -18,9 +18,9 @@ public class GunSystem : MonoBehaviour
 
     //Bullet error margin
     [SerializeField]
-    private float MinXError = -0.1f;
+    private float MinXError = -0.07f;
     [SerializeField]
-    private float MaxXError = 0.1f;
+    private float MaxXError = 0.07f;
 
     [SerializeField]
     private float bulletErrorX;

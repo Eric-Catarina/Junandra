@@ -4,10 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PLayer
-  - bala
-  - arma
-  - inimigos
+  - PlayerBullet
+  - EnemyBullet
+  - Walls
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -15,10 +15,10 @@ TagManager:
   - 
   - Water
   - UI
-  - tiro
-  - inimigo
-  - 
-  - 
+  - Player
+  - PlayerBullet
+  - Enemy
+  - EnemyBullet
   - 
   - 
   - 

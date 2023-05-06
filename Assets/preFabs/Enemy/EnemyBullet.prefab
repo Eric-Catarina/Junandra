@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 484898785920674433}
   - component: {fileID: 484898785920674438}
   - component: {fileID: 484898785920674439}
-  - component: {fileID: 484898785920674435}
-  m_Layer: 6
-  m_Name: Bala1
-  m_TagString: bala
+  - component: {fileID: -2718659132187022741}
+  m_Layer: 9
+  m_Name: EnemyBullet
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7870bf36cc7c5cb41ae62ecf2baa8167, type: 2}
+  - {fileID: 2100000, guid: 9187f7a999ff2174984bb69d56eacfbd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &484898785920674435
+--- !u!114 &-2718659132187022741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,8 +107,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 484898785920674437}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43576f9a7061f8b40b38de136150e6ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 37b87382e56709443a038158389f4670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 0.5
-  friction: 0.006
+  speed: 10
+  damage: 0.5
+  lifeTime: 1.5
+  lifeTimeCounter: 0
+  isEnemyBullet: 1
+  isPlayerBullet: 0
+  rotationSpeed: 0
+  player: {fileID: 0}

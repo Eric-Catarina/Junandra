@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 5824820278564905812}
   - component: {fileID: -6608477383829921277}
   - component: {fileID: -2912340115654699871}
-  m_Layer: 7
+  - component: {fileID: -6453649398957021151}
+  m_Layer: 8
   m_Name: NaveInimiga
-  m_TagString: inimigos
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,14 +29,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2343006732696286530}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30.000002, y: 30.000002, z: 30.000002}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0.5183173, y: -0.45491502, z: -0.0102241635}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!33 &2044637582847549533
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -100,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 1396682609070937841, guid: 36afec19b59ce484b9426464f29d6b5c, type: 3}
   enemyDefinition: {fileID: 11400000, guid: 6fee44a8059f75d42b9a70abe2ca5e45, type: 2}
+  emissionController: {fileID: -6453649398957021151}
+  bullet: {fileID: 484898785920674437, guid: 018254f8baba30d47a6ab553fe7a500e, type: 3}
 --- !u!65 &-6608477383829921277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -129,3 +132,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-6453649398957021151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2343006732696286530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2379c0d7b3cb5a14dab82536b82594e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityMultiplier: 1.5
+  increaseIntensityOnCollision: 0
