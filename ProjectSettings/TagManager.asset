@@ -9,6 +9,7 @@ TagManager:
   - Walls
   - Enemy
   - bala
+  - inimigos
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemy
   - EnemyBullet
   - Item
-  - 
+  - Walls
   - 
   - 
   - 

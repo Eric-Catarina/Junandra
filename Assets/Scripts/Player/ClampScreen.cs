@@ -5,22 +5,22 @@ using UnityEngine;
 public class ClampScreen : MonoBehaviour
 {
     private Vector3 playerPosition;
-    // Start is called before the first frame update
-    //-16.8
-    //-10
+    public float xMin = -20f;
+    public float xMax = 20f;
+    public float yMin = -7.5f;
+    public float yMax = 20f;
 
     void Start()
     {
         playerPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         playerPosition = transform.position;
 
-        playerPosition.x =  Mathf.Clamp(playerPosition.x, -20f, 20f);
-        playerPosition.y =  Mathf.Clamp(playerPosition.y, -8f, 20);
+        playerPosition.x =  Mathf.Clamp(playerPosition.x, xMin, xMax);
+        playerPosition.y =  Mathf.Clamp(playerPosition.y, yMin, yMax);
 
         transform.position = playerPosition;
 

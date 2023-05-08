@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 5796201091296458568}
   - component: {fileID: -5730370171356273759}
   - component: {fileID: -2146826100620424466}
+  - component: {fileID: 2512795489767477087}
   m_Layer: 6
   m_Name: Nave
   m_TagString: Player
@@ -258,3 +259,21 @@ MonoBehaviour:
   currentHealth: 0
   damage: 0
   shieldBubble: {fileID: 186346888372926767, guid: 94e323fb77a9d574c921583a41a1fd49, type: 3}
+  buffText: {fileID: 0}
+  healthText: {fileID: 0}
+--- !u!114 &2512795489767477087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564541382722793098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3e693716424ac4bbcf6ce30d35a85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  xMin: -16
+  xMax: 16
+  yMin: -7.5
+  yMax: 20

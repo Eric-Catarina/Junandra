@@ -16,6 +16,7 @@ public class SceneManager : MonoBehaviour
 
     public static void LoadScene0()
     {
+        Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MenuInicial");
     }
 

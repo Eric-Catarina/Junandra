@@ -13,7 +13,7 @@ public class ItemBehaviour : MonoBehaviour
         {
             return;
         }
-        
+
         float randomNumber = RollRandomNumber();
 
         // 30% chance of activating player bubble shield
@@ -41,10 +41,12 @@ public class ItemBehaviour : MonoBehaviour
             Debug.Log("Movement speed increased");
             Destroy(gameObject);
             return;
-        }	
+        }
+        // 10% chance of increasing player max health
         else
         {
             // Regen player hp by 1
+            collision.gameObject.GetComponent<PlayerController>().IncreaseMaxHealth(1);
             collision.gameObject.GetComponent<PlayerController>().IncreaseHealth(1);
             Destroy(gameObject);
             return;

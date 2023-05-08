@@ -49,4 +49,7 @@ public class GameCheat : MonoBehaviour
         SceneManager.LoadSceneGameOver();
     }
 
+    // Prints "amogus" when player presses t
+ 
+
 }

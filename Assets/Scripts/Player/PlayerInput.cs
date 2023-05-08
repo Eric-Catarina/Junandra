@@ -13,6 +13,8 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float speedModifier = 1.05f;
 
     private GunSystem gunSystem;
+
+    public float horizontalPlayerInput, verticalPlayerInput;
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -22,8 +24,8 @@ public class PlayerInput : MonoBehaviour
     void FixedUpdate()
     {
         rb.velocity = Vector3.zero;
-        float horizontalPlayerInput = Input.GetAxisRaw("Horizontal");
-        float verticalPlayerInput = Input.GetAxisRaw("Vertical");
+         horizontalPlayerInput = Input.GetAxisRaw("Horizontal");
+         verticalPlayerInput = Input.GetAxisRaw("Vertical");
         
         if (horizontalPlayerInput != 0 || verticalPlayerInput != 0)
         {
