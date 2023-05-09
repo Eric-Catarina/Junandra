@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemBehaviour : MonoBehaviour
 {
-    [SerializeField] private float movement_speed = 0.5f;
-    [SerializeField] private float attackSpeedIncrease = 0.1f;
+    [SerializeField] private float movement_speed = 1.1f;
+    [SerializeField] private float attackSpeedIncrease = 1.1f;
 
     void OnTriggerEnter(Collider collision)
     {

@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float damage;
+    public float rotationSpeed = 0.5f;
+    public float tiltAngle = 45f;
+    public Quaternion originalRotation;
 
     // Bubble Shield
     private bool haveShieldBubble = false;
@@ -20,7 +23,10 @@ public class PlayerController : MonoBehaviour
     private float bubbleShieldHealthPercentage;
     private float bubbleShieldStartingOpacity = 0.15f;
 
+    private Rigidbody rb;
+
     private PlayerInput playerInput;
+
 
 
     // References
@@ -32,6 +38,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject gameOverPanel;
 
+    private EmissionController emissionController;
+
 
     void Start()
     {
@@ -40,11 +48,29 @@ public class PlayerController : MonoBehaviour
         healthText.text = "Health: " + currentHealth.ToString();
         ChangeHealthTextColor();
         playerInput = GetComponent<PlayerInput>();
+        rb = gameObject.GetComponent<Rigidbody>();
+        originalRotation = transform.rotation;
+        emissionController = GetComponent<EmissionController>();
+
     }
 
     void Update()
     {
-        TiltPlayerShip(playerInput.horizontalPlayerInput);
+        float horizontalInput = playerInput.horizontalPlayerInput; // get the player's left/right movement input
+
+        Vector3 movement = new Vector3(horizontalInput, 0.0f, 0);
+        rb.velocity = movement * horizontalInput;
+
+        if (rb.velocity.magnitude > 0.1)
+        {
+            float tiltAroundZ = -horizontalInput * tiltAngle;
+            Quaternion targetRotation = Quaternion.Euler(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, -tiltAroundZ);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.deltaTime * rotationSpeed * 5);
+        }
 
     }
 
@@ -56,13 +82,8 @@ public class PlayerController : MonoBehaviour
             return;
         }
 
-        currentHealth -= damage;
-        ChangeHealthTextColor();
-        healthText.text = "Health: " + currentHealth.ToString();
-        if (currentHealth <= 0)
-        {
-            DieAndPause();
-        }
+        TakeDamageOnHealth(damage);
+
 
     }
 
@@ -77,7 +98,6 @@ public class PlayerController : MonoBehaviour
         {
             DestroyBubbleShield();
         }
-        return;
     }
 
 
@@ -97,7 +117,7 @@ public class PlayerController : MonoBehaviour
 
     public float IncreaseMaxHealth(float health)
     {
-        ChangeBuffText("Max Health Increased!");
+        Blink();
         maxHealth += health;
         ChangeHealthTextColor();
         healthText.text = "Health: " + currentHealth.ToString();
@@ -105,19 +125,22 @@ public class PlayerController : MonoBehaviour
     }
     public void IncreaseAttackSpeed(float attackSpeed)
     {
+        Blink();
         gunSystem.IncreaseAttackSpeed(attackSpeed);
         ChangeBuffText("Attack Speed Increased!");
     }
 
     public void IncreaseMovementSpeed(float movementSpeed)
     {
-        movementSpeed += movementSpeed;
+        Blink();
+        this.movementSpeed *= movementSpeed;
         ChangeBuffText("Movement Speed Increased!");
     }
 
     // Instantiate shield bubble inside player
     public void ActivateBubbleShield()
     {
+        Blink();
         ChangeBuffText("Bubble Shield Activated!");
         bubbleShieldHealth = bubbleShieldMaxHealth;
         if (haveShieldBubble)
@@ -165,7 +188,7 @@ public class PlayerController : MonoBehaviour
     // Makes buff text slowly fade away
     public void FadeBuffText()
     {
-        buffText.CrossFadeAlpha(0, 1, false);
+        buffText.CrossFadeAlpha(0, 2, false);
     }
 
     // Makes buff text appear again
@@ -191,8 +214,28 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void Blink(){
+        StartCoroutine(BlinkCoroutine());
+    }
+
+    private IEnumerator BlinkCoroutine(){
+        emissionController.SetIntensity(5);
+
+        for (int i = 100; i > 0; i--){
+            float emissao = i/1.7f;
+            if (emissao < 1.2f){
+                emissao = 1.2f;
+            }
+            emissionController.SetIntensity(emissao);
+            yield return new WaitForSeconds(0.001f);
+            
+        }
+    }
+
+
+
     // Turn player  gameObject Inactive and pause game
-  
+
     public void DieAndPause()
     {
         gameObject.SetActive(false);
@@ -200,14 +243,21 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0;
     }
 
-    // Slowly and smoothly tilts the player ship rotating in y axis with a maximum of 30 degrees according to horizontal movement
+    public void TakeDamageOnHealth(float damage){
+        //Blink();
 
-    private void TiltPlayerShip(float horizontalPlayerInput)
-    {
-        float tiltAngle = horizontalPlayerInput * 30;
-        Quaternion targetRotation = Quaternion.Euler(0, 0, -tiltAngle);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.1f);
+        currentHealth -= damage;
+        ChangeHealthTextColor();
+        healthText.text = "Health: " + currentHealth.ToString();
+        if (currentHealth <= 0)
+        {
+            DieAndPause();
+        }
     }
+
+
+
+
 
 
 

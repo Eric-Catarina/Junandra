@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: -5730370171356273759}
   - component: {fileID: -2146826100620424466}
   - component: {fileID: 2512795489767477087}
+  - component: {fileID: 5557585314633459396}
   m_Layer: 6
   m_Name: Nave
   m_TagString: Player
@@ -151,7 +152,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 24658ef006b37e94583811901197b4fa, type: 2}
+  - {fileID: 2100000, guid: 38b8769e5d46ccf4cac2a6466d3e635f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,6 +204,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   speedModifier: 1.05
+  horizontalPlayerInput: 0
+  verticalPlayerInput: 0
 --- !u!65 &5796201091296458568
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -258,9 +261,13 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 0
   damage: 0
+  rotationSpeed: 0.5
+  tiltAngle: 45
+  originalRotation: {x: 0, y: 0, z: 0, w: 0}
   shieldBubble: {fileID: 186346888372926767, guid: 94e323fb77a9d574c921583a41a1fd49, type: 3}
   buffText: {fileID: 0}
   healthText: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!114 &2512795489767477087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,3 +284,17 @@ MonoBehaviour:
   xMax: 16
   yMin: -7.5
   yMax: 20
+--- !u!114 &5557585314633459396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564541382722793098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2379c0d7b3cb5a14dab82536b82594e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityMultiplier: 2
+  increaseIntensityOnCollision: 1

@@ -26,7 +26,7 @@ public class BulletController : MonoBehaviour
        // Move Player bullet up
          if (isPlayerBullet)
          {
-              transform.position += Vector3.up * speed * Time.deltaTime;
+            transform.position += transform.up * speed * Time.deltaTime;
          }
         
         // Move Enemy bullet in player direction

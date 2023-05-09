@@ -84,7 +84,7 @@ public class GunSystem : MonoBehaviour
     }
 
     public void IncreaseAttackSpeed(float attackSpeed){
-        fireRate += attackSpeed;
+        fireRate *= attackSpeed;
     }
 
 }
