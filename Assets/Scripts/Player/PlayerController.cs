@@ -86,7 +86,6 @@ public class PlayerController : MonoBehaviour
 
         bubbleShieldHealth -= damage;
         bubbleShieldHealthPercentage = bubbleShieldHealth / bubbleShieldMaxHealth;
-        ChangeBubbleShieldOpacity();
 
         if (bubbleShieldHealth <= 0)
         {
