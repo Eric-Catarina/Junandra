@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
     public float speed;
-    public float damage = 1;
+    public float damage;
     public float lifeTime;
     public float lifeTimeCounter;
     public bool isEnemyBullet;
@@ -16,8 +16,7 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         lifeTimeCounter = lifeTime;
-        player = GameObject.Find("Player");
-    
+        player = GameObject.Find("Player");    
     }
 
     // Update is called once per frame
@@ -59,4 +58,5 @@ public class BulletController : MonoBehaviour
             Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
+
 }

@@ -13,4 +13,5 @@ public class EnemyDefinition : ScriptableObject
     public bool movesInSin;
 
     public float sinFrequency, sinAmplitude;
+    public float damage;
 }

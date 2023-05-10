@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public float damage;
     public float rotationSpeed = 0.5f;
     public float tiltAngle = 45f;
+    public float horizontalInput;
     public Quaternion originalRotation;
 
     // Bubble Shield
@@ -39,38 +40,31 @@ public class PlayerController : MonoBehaviour
     private GameObject gameOverPanel;
 
     private EmissionController emissionController;
+    private GameManager gameManager;
 
 
     void Start()
     {
         currentHealth = maxHealth;
         gunSystem = GetComponent<GunSystem>();
+        gunSystem.damage = damage;
         healthText.text = "Health: " + currentHealth.ToString();
         ChangeHealthTextColor();
         playerInput = GetComponent<PlayerInput>();
         rb = gameObject.GetComponent<Rigidbody>();
         originalRotation = transform.rotation;
         emissionController = GetComponent<EmissionController>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        float horizontalInput = playerInput.horizontalPlayerInput; // get the player's left/right movement input
+        horizontalInput = playerInput.horizontalPlayerInput; // get the player's left/right movement input
 
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, 0);
-        rb.velocity = movement * horizontalInput;
+        Move();
+        TiltShip();
 
-        if (rb.velocity.magnitude > 0.1)
-        {
-            float tiltAroundZ = -horizontalInput * tiltAngle;
-            Quaternion targetRotation = Quaternion.Euler(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, -tiltAroundZ);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-        }
-        else
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.deltaTime * rotationSpeed * 5);
-        }
 
     }
 
@@ -152,6 +146,7 @@ public class PlayerController : MonoBehaviour
         bubbleShieldInstance.transform.parent = transform;
         bubbleShieldInstance.transform.localPosition = new Vector3(0, -8.8f, 0);
         haveShieldBubble = true;
+        StopCoroutine(ShieldBubbleTimer());
         StartCoroutine(ShieldBubbleTimer());
 
     }
@@ -238,9 +233,10 @@ public class PlayerController : MonoBehaviour
 
     public void DieAndPause()
     {
-        gameObject.SetActive(false);
+        DeactivatePlayer();
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        gameManager.SlowTime();
+
     }
 
     public void TakeDamageOnHealth(float damage){
@@ -255,8 +251,35 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Move(){
+        Vector3 movement = new Vector3(horizontalInput, 0.0f, 0);
+        rb.velocity = movement * horizontalInput;
+    }
 
+    private void TiltShip(){
+        if (rb.velocity.magnitude > 0.1)
+        {
+            float tiltAroundZ = -horizontalInput * tiltAngle;
+            Quaternion targetRotation = Quaternion.Euler(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, -tiltAroundZ);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, originalRotation, Time.deltaTime * rotationSpeed * 5);
+        
+        }
+    }
 
+    // Deatctivates player and its children visibility and collider
+    private void DeactivatePlayer()
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
 
 
 

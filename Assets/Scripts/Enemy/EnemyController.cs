@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
 
     // Movement
     private float movementSpeed;
+    public float damage;
     private bool movesInSin;
     private float sinCenterX;
     private float amplitude ;
@@ -56,7 +57,8 @@ public class EnemyController : MonoBehaviour
             float x = Mathf.Sin(Time.time * frequency) * amplitude;
             float y = Mathf.Abs(Mathf.Cos(Time.time * frequency) * amplitude);
             Vector3 direction = new Vector3(x, -y, 0f);
-            rb.velocity = direction.normalized * movementSpeed;
+            // convert the above rb.velocity to rb.MovePosition
+            rb.MovePosition(transform.position + direction.normalized * movementSpeed * Time.fixedDeltaTime);
            
         }
         else
@@ -69,8 +71,7 @@ public class EnemyController : MonoBehaviour
     }
     void OnTriggerEnter(Collider collider){
 
-        if (collider.gameObject.tag == "PlayerBullet"){
-            BulletController bulletController = collider.gameObject.GetComponent<BulletController>();
+        if (collider.gameObject.TryGetComponent(out BulletController bulletController)){
             TakeDamage(bulletController.damage);
             Destroy(collider.gameObject);
         }
@@ -78,6 +79,10 @@ public class EnemyController : MonoBehaviour
             PlayerController playerController = collider.gameObject.GetComponent<PlayerController>();
             playerController.TakeDamage(1);
         }
+        else if (collider.gameObject.tag == "Walls"){
+            Destroy(gameObject);
+        }
+
     }
 
     // Initialize the definition variables
@@ -89,12 +94,13 @@ public class EnemyController : MonoBehaviour
         frequency = enemyDefinition.sinFrequency;
         maxHealth = enemyDefinition.maxHealth;
         currentHealth = enemyDefinition.currentHealth;
+        damage = enemyDefinition.damage;
     }
 
     private void Die(){
         if (!estaMorto){
             SpawnItem();
-            scoreManagerScript.AddScore(1);
+            scoreManagerScript.AddScore(RandomNumber(100,500));
             Destroy(gameObject);
         }
         estaMorto = true;
@@ -110,6 +116,8 @@ public class EnemyController : MonoBehaviour
         Blink();
 
         currentHealth -= damage;
+        scoreManagerScript.AddScore(RandomNumber( Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));
+
         if (currentHealth <= 0){
             Die();
         }
@@ -148,7 +156,9 @@ public class EnemyController : MonoBehaviour
         Vector3 playerPosition = player.transform.position;
         Vector3 direction = (playerPosition - transform.position).normalized;
         GameObject bulletInstance = Instantiate(bullet, transform.position, transform.rotation);
-        bulletInstance.GetComponent<BulletController>().isEnemyBullet = true;
+        BulletController bulletController =  bulletInstance.GetComponent<BulletController>();
+        bulletController.isEnemyBullet = true;
+        bulletController.damage = damage;
     }
 
     // Shoot every 1.5 seconds
@@ -157,6 +167,11 @@ public class EnemyController : MonoBehaviour
             Shoot();
             yield return new WaitForSeconds(1.5f);
         }
+    }
+
+    // Generate random number between function parameters
+    public float RandomNumber(int min, int max){
+        return Random.Range(min, max);
     }
 
 

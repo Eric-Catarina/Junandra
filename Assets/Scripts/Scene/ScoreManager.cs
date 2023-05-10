@@ -17,6 +17,7 @@ public class ScoreManager : MonoBehaviour
 
     private float UpdateScoreTMP(){
         scoreTMP.text = "Score: " + score.ToString();
+
         return score;
     }
     public float SetScore(float targetScore){

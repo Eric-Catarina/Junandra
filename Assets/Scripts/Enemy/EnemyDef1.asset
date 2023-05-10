@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334b756d1c5d93645a27864d7a363542, type: 3}
   m_Name: EnemyDef1
   m_EditorClassIdentifier: 
-  currentHealth: 10
-  maxHealth: 10
+  currentHealth: 100
+  maxHealth: 100
   movementSpeed: 5
   movesInSin: 1
   sinFrequency: 5
   sinAmplitude: 6
+  damage: 1

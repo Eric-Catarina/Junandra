@@ -4,7 +4,7 @@ using TMPro;
 public class GunSystem : MonoBehaviour
 {
     //Gun stats
-    public int damage;
+    public float damage;
     public float fireRate, spread, range, timeBetweenShots;
     public int bulletsPerTap;
     public bool allowButtonHold;
@@ -12,7 +12,7 @@ public class GunSystem : MonoBehaviour
 
     //bools 
     public bool tryingToShoot, readyToShoot;
-    public GameObject bullet;
+    public GameObject bulletFab;
     //Reference
     public Transform attackPoint;
 
@@ -60,7 +60,8 @@ public class GunSystem : MonoBehaviour
         //Calculate Direction with Spread
         Vector3 direction = Vector3.up;
 
-        Instantiate(bullet, bulletSpawnPoint, attackPoint.rotation);
+        GameObject bullet = Instantiate(bulletFab, bulletSpawnPoint, attackPoint.rotation);
+        bullet.GetComponent<BulletController>().damage = damage;
 
         bulletsShot--;
 
