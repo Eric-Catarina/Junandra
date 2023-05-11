@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    public GameObject hitEffect;
 
     // Update is called once per frame
     void Update()
@@ -47,5 +48,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void SpawnHitEffect(Vector3 position)
+    {
+        Instantiate(hitEffect, position, Quaternion.identity);
+    }
 
 }

@@ -13,10 +13,12 @@ public class BulletController : MonoBehaviour
 
     public float rotationSpeed;
     public GameObject player;
+    private GameManager gameManager;
     void Start()
     {
         lifeTimeCounter = lifeTime;
-        player = GameObject.Find("Player");    
+        player = GameObject.Find("Player");  
+        gameManager = (GameManager)FindObjectOfType(typeof(GameManager));  
     }
 
     // Update is called once per frame
@@ -49,6 +51,8 @@ public class BulletController : MonoBehaviour
             player.GetComponent<PlayerController>().TakeDamage(damage);
             Destroy(gameObject);
         }
+        gameManager.SpawnHitEffect(transform.position);
+
     }
 
         private void LookAtPlayer(){

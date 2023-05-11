@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField]
     private GameObject item;
+
+    // VFX
     public EnemyDefinition enemyDefinition;
 
     public EmissionController emissionController;
@@ -114,6 +116,7 @@ public class EnemyController : MonoBehaviour
 
         StopCoroutine(BlinkCoroutine());
         Blink();
+
 
         currentHealth -= damage;
         scoreManagerScript.AddScore(RandomNumber( Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));

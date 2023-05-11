@@ -6,6 +6,12 @@ public class ItemBehaviour : MonoBehaviour
 {
     [SerializeField] private float movement_speed = 1.1f;
     [SerializeField] private float attackSpeedIncrease = 1.1f;
+    private PlayerController playerController;
+
+    void Start()
+    {
+       playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+    }
 
     void OnTriggerEnter(Collider collision)
     {
@@ -17,9 +23,9 @@ public class ItemBehaviour : MonoBehaviour
         float randomNumber = RollRandomNumber();
 
         // 30% chance of activating player bubble shield
-        if (randomNumber < 100)
+        if (randomNumber < 30)
         {
-            collision.gameObject.GetComponent<PlayerController>().ActivateBubbleShield();
+            playerController.ActivateBubbleShield();
             Debug.Log("Bubble shield activated");
             Destroy(gameObject);
             return;
@@ -28,16 +34,16 @@ public class ItemBehaviour : MonoBehaviour
         // 30% chance of increasing attack speed
         else if (randomNumber >= 30 && randomNumber < 60)
         {
-            collision.gameObject.GetComponent<PlayerController>().IncreaseAttackSpeed(attackSpeedIncrease);
+            playerController.IncreaseAttackSpeed(attackSpeedIncrease);
             Debug.Log("Attack speed increased");
             Destroy(gameObject);
             return;
         }
 
         // 30% chance of increasing player speed
-        else if (randomNumber >= 60 && randomNumber < 90)
+        else if (randomNumber >= 60 && randomNumber < 75)
         {
-            collision.gameObject.GetComponent<PlayerController>().IncreaseMovementSpeed(movement_speed);
+            playerController.IncreaseMovementSpeed(movement_speed);
             Debug.Log("Movement speed increased");
             Destroy(gameObject);
             return;
@@ -46,8 +52,8 @@ public class ItemBehaviour : MonoBehaviour
         else
         {
             // Regen player hp by 1
-            collision.gameObject.GetComponent<PlayerController>().IncreaseMaxHealth(1);
-            collision.gameObject.GetComponent<PlayerController>().IncreaseHealth(1);
+            playerController.IncreaseMaxHealth(1);
+            playerController.IncreaseHealth(1);
             Destroy(gameObject);
             return;
         }
