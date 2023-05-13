@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Cinemachine;
 public class BulletController : MonoBehaviour
 {
     public float speed;
@@ -14,11 +14,14 @@ public class BulletController : MonoBehaviour
     public float rotationSpeed;
     public GameObject player;
     private GameManager gameManager;
+    private CinemachineImpulseSource impulseSource;
+    private 
     void Start()
     {
         lifeTimeCounter = lifeTime;
         player = GameObject.Find("Player");  
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));  
+        impulseSource = GetComponent<CinemachineImpulseSource>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class BulletController : MonoBehaviour
          if (isPlayerBullet)
          {
             transform.position += transform.up * speed * Time.deltaTime;
+
          }
         
         // Move Enemy bullet in player direction
@@ -49,9 +53,13 @@ public class BulletController : MonoBehaviour
     void OnTriggerEnter(Collider collider){
         if (collider.gameObject.CompareTag("Player") && isEnemyBullet){
             player.GetComponent<PlayerController>().TakeDamage(damage);
+            gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.25f);   
+
             Destroy(gameObject);
         }
         gameManager.SpawnHitEffect(transform.position);
+        
+        gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource);   
 
     }
 
