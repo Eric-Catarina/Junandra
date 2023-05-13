@@ -1,18 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
 
     public GameObject hitEffect;
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
-
+        Time.timeScale = 1f;
     }
+
 
     public void SlowTime()
     {
@@ -50,7 +50,12 @@ public class GameManager : MonoBehaviour
 
     public void SpawnHitEffect(Vector3 position)
     {
-        Instantiate(hitEffect, position, Quaternion.identity);
+        GameObject hitEffectInstance = Instantiate(hitEffect, position, Quaternion.identity);
+        Destroy(hitEffectInstance, 0.5f);
     }
+
+
+
+
 
 }

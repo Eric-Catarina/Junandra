@@ -11,6 +11,7 @@ public class ItemBehaviour : MonoBehaviour
     void Start()
     {
        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+       Destroy(gameObject, 10f);
     }
 
     void OnTriggerEnter(Collider collision)
@@ -49,7 +50,7 @@ public class ItemBehaviour : MonoBehaviour
             return;
         }
         // 10% chance of increasing player max health
-        else
+        else if (randomNumber >=85)
         {
             // Regen player hp by 1
             playerController.IncreaseMaxHealth(1);

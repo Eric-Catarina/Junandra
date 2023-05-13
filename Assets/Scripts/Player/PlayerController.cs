@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float rotationSpeed = 0.5f;
     public float tiltAngle = 45f;
     public float horizontalInput;
+    public float verticalInput;
     public Quaternion originalRotation;
 
     // Bubble Shield
@@ -60,11 +61,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        horizontalInput = playerInput.horizontalPlayerInput; // get the player's left/right movement input
-
-        Move();
-        TiltShip();
-
+       TiltShip();
 
     }
 
@@ -250,10 +247,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void Move(){
-        Vector3 movement = new Vector3(horizontalInput, 0.0f, 0);
-        rb.velocity = movement * horizontalInput;
-    }
 
     private void TiltShip(){
         if (rb.velocity.magnitude > 0.1)

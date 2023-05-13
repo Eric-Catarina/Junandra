@@ -13,24 +13,36 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float speedModifier = 1.05f;
 
     private GunSystem gunSystem;
+    private GameManager gameManager;
+    private PlayerController playerController;
+    private PauseMenu pauseMenu;
 
     public float horizontalPlayerInput, verticalPlayerInput;
     private void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         gunSystem = GetComponent<GunSystem>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        playerController = GetComponent<PlayerController>();
+        pauseMenu = FindObjectOfType<PauseMenu>(true);
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        rb.velocity = Vector3.zero;
-         horizontalPlayerInput = Input.GetAxisRaw("Horizontal");
-         verticalPlayerInput = Input.GetAxisRaw("Vertical");
-        
-        if (horizontalPlayerInput != 0 || verticalPlayerInput != 0)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            MoveShip(horizontalPlayerInput, verticalPlayerInput);
+            Debug.Log("Escape pressed");
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.isPaused)
+        {
+            pauseMenu.PauseGame();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu.isPaused)
+        {
+            pauseMenu.UnpauseGame();
+        }
+
+        MoveShip(horizontalPlayerInput, verticalPlayerInput);
         
         if(gunSystem.allowButtonHold)
         {
@@ -44,7 +56,18 @@ public class PlayerInput : MonoBehaviour
     }   
     void  MoveShip(float horizontalPlayerInput, float verticalPlayerInput)
     {
-        rb.velocity = (new Vector3(horizontalPlayerInput, verticalPlayerInput, 0).normalized * (speed * Time.fixedDeltaTime));
+        rb.velocity = Vector3.zero;
+        horizontalPlayerInput = Input.GetAxisRaw("Horizontal");
+        verticalPlayerInput = Input.GetAxisRaw("Vertical");
+        
+        playerController.horizontalInput = horizontalPlayerInput;
+        playerController.verticalInput = verticalPlayerInput;
+
+        if (horizontalPlayerInput != 0 || verticalPlayerInput != 0)
+        {
+            rb.velocity = (new Vector3(horizontalPlayerInput, verticalPlayerInput, 0).normalized * (speed * Time.fixedDeltaTime));
+
+        }
     }
 
     
