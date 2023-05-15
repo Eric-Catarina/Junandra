@@ -1006,7 +1006,7 @@ MonoBehaviour:
   m_Use2DDistance: 0
   m_UseCameraSpace: 1
   m_ReactionSettings:
-    m_SecondaryNoise: {fileID: 11400000, guid: e9ce97b7a206dc64d90931ea044e0c72, type: 2}
+    m_SecondaryNoise: {fileID: 0}
     m_AmplitudeGain: 1
     m_FrequencyGain: 1
     m_Duration: 1
@@ -1263,8 +1263,8 @@ Camera:
   m_GameObject: {fileID: 2037592080}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.07084377, g: 0.06688325, b: 0.084905684, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.051178325, g: 0.035671044, b: 0.11320752, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1520,7 +1520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.500793
+      value: -17.501251
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1971,6 +1971,10 @@ PrefabInstance:
     - target: {fileID: 6519622370242728225, guid: f87e4948fdc307a4a9e26cae5171e557, type: 3}
       propertyPath: m_Name
       value: backgroundloop
+      objectReference: {fileID: 0}
+    - target: {fileID: 6519622370242728225, guid: f87e4948fdc307a4a9e26cae5171e557, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6519622370242728227, guid: f87e4948fdc307a4a9e26cae5171e557, type: 3}
       propertyPath: m_Materials.Array.data[0]

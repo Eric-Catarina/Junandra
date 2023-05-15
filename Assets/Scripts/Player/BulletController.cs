@@ -71,4 +71,6 @@ public class BulletController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
     }
 
+    
+
 }
