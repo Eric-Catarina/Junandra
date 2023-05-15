@@ -5,11 +5,16 @@ using DG.Tweening;
 
 public class SelfRotate : MonoBehaviour
 {
-    public Vector3 rotation = new Vector3 (0,0,0);
+    public float rotationSpeed;
+    private GameObject espinhosObject;
+
     void Start()
     {
-        transform.DORotate(rotation, 5f);
+        espinhosObject = transform.Find("Espinhos").gameObject; // encontra o GameObject filho chamado "espinhos" e armazena a referência na variável 'espinhos'
     }
 
+    void Update(){
+        espinhosObject.transform.Rotate(new Vector3(rotationSpeed,0,0));
+    }
 
 }

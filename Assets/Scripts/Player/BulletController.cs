@@ -54,12 +54,13 @@ public class BulletController : MonoBehaviour
         if (collider.gameObject.CompareTag("Player") && isEnemyBullet){
             player.GetComponent<PlayerController>().TakeDamage(damage);
             gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.25f);   
-
-            Destroy(gameObject);
         }
+
+
         gameManager.SpawnHitEffect(transform.position);
         
         gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource);   
+        Destroy(gameObject);
 
     }
 

@@ -9,7 +9,8 @@ public class EnemyGenerator : MonoBehaviour
     private Transform[] spawnPositionLimits;
 
     [SerializeField]
-    private GameObject enemy;
+    private GameObject enemy, shredder;
+
 
     public float spawnRate;
 
@@ -21,6 +22,7 @@ public class EnemyGenerator : MonoBehaviour
         spawnPositionLimits = GetComponentsInChildren<Transform>();
         RandomizeEnemySpawnPosition();
         SpawnEnemy(enemy);
+        SpawnEnemy(shredder);
     }
     void Update()
     {
@@ -28,6 +30,7 @@ public class EnemyGenerator : MonoBehaviour
         currentTime += Time.deltaTime;
         if (currentTime >= spawnRate){
             SpawnEnemy(enemy);
+            SpawnEnemy(shredder);
             currentTime = 0;
         }
 
@@ -41,7 +44,7 @@ public class EnemyGenerator : MonoBehaviour
         if(spawnRate >= 1 ){
             spawnRate -= 0.1f;
         }
-        GameObject enemyInstance = Instantiate(enemy, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
+        GameObject enemyInstance = Instantiate(enemyPrefab, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
 
         RandomizeEnemySpawnPosition();
     }

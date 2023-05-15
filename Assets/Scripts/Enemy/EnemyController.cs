@@ -30,9 +30,13 @@ public class EnemyController : MonoBehaviour
     private float movementSpeed;
     public float damage;
     private bool movesInSin;
+    private bool lookAtPlayer;
+    private bool shoots;
     private float sinCenterX;
     private float amplitude ;
     private float frequency ;
+
+    private float power;
 
     private Rigidbody rb;
 
@@ -47,12 +51,18 @@ public class EnemyController : MonoBehaviour
         InitializeEnemyDefinition(enemyDefinition);
 
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
-        StartCoroutine(ShootCoroutine());
+
+        if(shoots){
+            StartCoroutine(ShootCoroutine());
+        }
 
     }
 
     void FixedUpdate()
     {
+        if (lookAtPlayer){
+            LookAtPlayer();
+        }
         if (movesInSin)
         {
 
@@ -67,7 +77,8 @@ public class EnemyController : MonoBehaviour
         {
             rb.velocity = Vector3.down * movementSpeed;
         }
-        LookAtPlayer();
+
+
 
         
     }
@@ -97,11 +108,16 @@ public class EnemyController : MonoBehaviour
         maxHealth = enemyDefinition.maxHealth;
         currentHealth = enemyDefinition.currentHealth;
         damage = enemyDefinition.damage;
+        lookAtPlayer = enemyDefinition.lookAtPlayer;
+        power = enemyDefinition.power;
+        shoots = enemyDefinition.shoots;
     }
 
     private void Die(){
         if (!estaMorto){
-            SpawnItem();
+            if (Random.Range(0f,1f) < power){
+                SpawnItem();
+            }
             scoreManagerScript.AddScore(RandomNumber(100,500));
             Destroy(gameObject);
         }
@@ -122,6 +138,7 @@ public class EnemyController : MonoBehaviour
         scoreManagerScript.AddScore(RandomNumber( Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));
 
         if (currentHealth <= 0){
+            Debug.Log(currentHealth);
             Die();
         }
         return currentHealth;

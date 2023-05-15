@@ -13,12 +13,8 @@ public class EmissionController : MonoBehaviour
     private Color initialEmissiveColor;
 
     private void Start()
-    {
-        Renderer renderer = GetComponent<Renderer>();
-        if (renderer == null)
-        {
-            Debug.LogError("No Renderer component found on the GameObject.");
-            return;
+    {   
+        if (!TryGetComponent<Renderer>(out Renderer renderer)){
         }
 
         materialInstance = renderer.material;

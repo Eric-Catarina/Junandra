@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1995830468662073677}
   - component: {fileID: 1489648048865282715}
   - component: {fileID: 1956926437948826698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Anel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5839323973021622669}
   - component: {fileID: 8728204140766862636}
   - component: {fileID: 1458079180590801348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EsferaGrande.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3778244044901989346}
   - component: {fileID: 1895467563740802195}
   - component: {fileID: 8450964075395860398}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Espinhos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,9 +260,12 @@ GameObject:
   - component: {fileID: 5256386411969919688}
   - component: {fileID: -1842925497552425079}
   - component: {fileID: 6558447741001085681}
-  m_Layer: 0
+  - component: {fileID: 491520451329037124}
+  - component: {fileID: -1453917382634334774}
+  - component: {fileID: 2501025203791365145}
+  m_Layer: 8
   m_Name: Shredder
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -298,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0aae501f84f674aa8439cbecb1de24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotation: {x: 0, y: 360, z: 0}
+  rotationSpeed: 1.5
 --- !u!54 &6558447741001085681
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -315,6 +318,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &491520451329037124
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880141931576320114}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.4
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1453917382634334774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880141931576320114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fe88708d3bfcab47a067839df638e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 0}
+  enemyDefinition: {fileID: 11400000, guid: 0c5f0940132b7e448854cfaf851d88ae, type: 2}
+  emissionController: {fileID: 2501025203791365145}
+  bullet: {fileID: 0}
+  damage: 0
+--- !u!114 &2501025203791365145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4880141931576320114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2379c0d7b3cb5a14dab82536b82594e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityMultiplier: 1
+  increaseIntensityOnCollision: 0
 --- !u!1 &5150747562514026709
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,7 +373,7 @@ GameObject:
   - component: {fileID: 7396401364036480214}
   - component: {fileID: 3306391285411021439}
   - component: {fileID: 2091199803628256800}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EsferaOlho
   m_TagString: Untagged
   m_Icon: {fileID: 0}

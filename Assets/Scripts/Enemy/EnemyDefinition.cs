@@ -11,6 +11,11 @@ public class EnemyDefinition : ScriptableObject
     public float movementSpeed;
 
     public bool movesInSin;
+    public bool lookAtPlayer;
+    public bool movesTowardPlayer;
+    public bool shoots;
+
+    public float power;
 
     public float sinFrequency, sinAmplitude;
     public float damage;
