@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
 
     public GameObject hitEffect;
+    public GameObject explosionEffect;
 
     private void Awake()
     {
@@ -52,6 +53,12 @@ public class GameManager : MonoBehaviour
     {
         GameObject hitEffectInstance = Instantiate(hitEffect, position, Quaternion.identity);
         Destroy(hitEffectInstance, 0.5f);
+    }
+
+    public void SpawnExplosionEffect(Vector3 position)
+    {
+        GameObject hitEffectInstance = Instantiate(explosionEffect, position, Quaternion.identity);
+
     }
 
 

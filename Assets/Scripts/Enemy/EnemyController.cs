@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
 
     public GameObject bullet;
 
+    public GameManager gameManager;
+
     // Health
     private float currentHealth;
     private float maxHealth;
@@ -49,6 +51,7 @@ public class EnemyController : MonoBehaviour
         InitializeEnemyDefinition(enemyDefinition);
 
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
+        gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
 
         if(shoots){
             StartCoroutine(ShootCoroutine());
@@ -117,6 +120,7 @@ public class EnemyController : MonoBehaviour
                 SpawnItem();
             }
             scoreManagerScript.AddScore(RandomNumber(100,500));
+            gameManager.SpawnExplosionEffect(transform.position);
             Destroy(gameObject);
         }
         estaMorto = true;

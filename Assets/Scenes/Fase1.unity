@@ -330,6 +330,10 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 3956174744924945103}
+    - target: {fileID: 3620206678065561582, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: explosionEffect
+      value: 
+      objectReference: {fileID: 5729941500362766411, guid: 4c066cedbcf72cb4792f75dbccfd971c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
 --- !u!1 &282896890
@@ -1421,7 +1425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.501343
+      value: -17.501282
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
