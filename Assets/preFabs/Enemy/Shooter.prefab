@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2912340115654699871}
   - component: {fileID: -6453649398957021151}
   m_Layer: 8
-  m_Name: NaveInimiga
+  m_Name: Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,6 +103,7 @@ MonoBehaviour:
   enemyDefinition: {fileID: 11400000, guid: 6fee44a8059f75d42b9a70abe2ca5e45, type: 2}
   emissionController: {fileID: -6453649398957021151}
   bullet: {fileID: 484898785920674437, guid: 018254f8baba30d47a6ab553fe7a500e, type: 3}
+  damage: 0
 --- !u!65 &-6608477383829921277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -146,3 +147,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensityMultiplier: 1.5
   increaseIntensityOnCollision: 0
+  hasEmission: 1

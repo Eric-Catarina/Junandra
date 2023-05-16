@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 334b756d1c5d93645a27864d7a363542, type: 3}
-  m_Name: EnemyDef1
+  m_Name: ShooterDef
   m_EditorClassIdentifier: 
   currentHealth: 100
   maxHealth: 100
@@ -19,7 +19,7 @@ MonoBehaviour:
   lookAtPlayer: 1
   movesTowardPlayer: 0
   shoots: 1
-  power: 1.5
+  power: 25
   sinFrequency: 5
   sinAmplitude: 6
   damage: 1

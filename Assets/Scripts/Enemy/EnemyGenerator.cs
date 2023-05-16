@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour
 {
-    // Start is called before the first frame update
 
     private Transform[] spawnPositionLimits;
 
-    [SerializeField]
-    private GameObject enemy, shredder;
+    public List<EnemyDefinition> enemyDefinitions;
+    public List<GameObject> enemiesPrefabs;
 
-
+    public List<float> enemiesPower;
     public float spawnRate;
+    public AnimationCurve temperatureCurve;
+    public float temperaturePercentage;
 
     private float randomXTransform;
     public float x1, x2;
     float currentTime = 0;
     void Start()
     {
+        InitializeEnemyPowerLevel();
+        temperaturePercentage = temperatureCurve.Evaluate(Time.time);
         spawnPositionLimits = GetComponentsInChildren<Transform>();
         RandomizeEnemySpawnPosition();
-        SpawnEnemy(enemy);
-        SpawnEnemy(shredder);
+        SpawnEnemy(enemiesPrefabs[0]);
+        SpawnEnemy(enemiesPrefabs[1]);
     }
     void Update()
     {
-        
+        temperaturePercentage = temperatureCurve.Evaluate(Time.time);
         currentTime += Time.deltaTime;
         if (currentTime >= spawnRate){
-            SpawnEnemy(enemy);
-            SpawnEnemy(shredder);
+            SpawnEnemy(enemiesPrefabs[0]);
+            SpawnEnemy(enemiesPrefabs[1]);
             currentTime = 0;
         }
 
@@ -41,11 +44,14 @@ public class EnemyGenerator : MonoBehaviour
     }
 
     public void SpawnEnemy(GameObject enemyPrefab){
-        if(spawnRate >= 1 ){
-            spawnRate -= 0.1f;
-        }
         GameObject enemyInstance = Instantiate(enemyPrefab, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
 
         RandomizeEnemySpawnPosition();
+    }
+
+    public void InitializeEnemyPowerLevel(){
+        for(int i = 0; i < enemyDefinitions.Count; i++){
+            enemiesPower.Add(enemyDefinitions[i].power);
+        }
     }
 }

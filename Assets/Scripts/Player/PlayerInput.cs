@@ -29,10 +29,6 @@ public class PlayerInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Debug.Log("Escape pressed");
-        }
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseMenu.isPaused)
         {
             pauseMenu.PauseGame();

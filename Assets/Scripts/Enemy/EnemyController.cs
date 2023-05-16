@@ -13,9 +13,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private GameObject item;
 
-    // VFX
     public EnemyDefinition enemyDefinition;
-
     public EmissionController emissionController;
     private GameObject player;
 
@@ -115,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
     private void Die(){
         if (!estaMorto){
-            if (Random.Range(0f,1f) < power){
+            if (Random.Range(0f,100f) < power){
                 SpawnItem();
             }
             scoreManagerScript.AddScore(RandomNumber(100,500));
@@ -138,7 +136,6 @@ public class EnemyController : MonoBehaviour
         scoreManagerScript.AddScore(RandomNumber( Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));
 
         if (currentHealth <= 0){
-            Debug.Log(currentHealth);
             Die();
         }
         return currentHealth;

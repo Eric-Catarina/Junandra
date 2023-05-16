@@ -6,6 +6,7 @@ public class EmissionController : MonoBehaviour
 {
     [SerializeField] private float intensityMultiplier = 1.0f;
     [SerializeField] private bool increaseIntensityOnCollision = false;
+    public bool hasEmission;
     float baseIntensity;
 
     private static readonly int EmissiveColorID = Shader.PropertyToID("_EmissionColor");
@@ -13,13 +14,18 @@ public class EmissionController : MonoBehaviour
     private Color initialEmissiveColor;
 
     private void Start()
-    {   
-        if (!TryGetComponent<Renderer>(out Renderer renderer)){
-        }
+    {
+        if (hasEmission)
+        {
 
-        materialInstance = renderer.material;
-        initialEmissiveColor = materialInstance.GetColor(EmissiveColorID);
-        baseIntensity = initialEmissiveColor.r;
+            if (!TryGetComponent<Renderer>(out Renderer renderer))
+            {
+            }
+
+            materialInstance = renderer.material;
+            initialEmissiveColor = materialInstance.GetColor(EmissiveColorID);
+            baseIntensity = initialEmissiveColor.r;
+        }
     }
 
     public void SetIntensity(float intensity)
@@ -30,8 +36,10 @@ public class EmissionController : MonoBehaviour
 
     private void UpdateEmission()
     {
-        Color newEmissiveColor = initialEmissiveColor * intensityMultiplier;
-        materialInstance.SetColor(EmissiveColorID, newEmissiveColor);
+        if (hasEmission){
+            Color newEmissiveColor = initialEmissiveColor * intensityMultiplier;
+            materialInstance.SetColor(EmissiveColorID, newEmissiveColor);
+        }
     }
 
     public IEnumerator FlashCoroutine(float intensity)
@@ -50,7 +58,8 @@ public class EmissionController : MonoBehaviour
         materialInstance.SetColor("_EmissionColor", initialEmissiveColor * baseIntensity);
     }
 
-    public void Flash(float intensity){
+    public void Flash(float intensity)
+    {
         StartCoroutine(FlashCoroutine(intensity));
     }
 }

@@ -9,17 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 334b756d1c5d93645a27864d7a363542, type: 3}
-  m_Name: ShredderDef
+  m_Script: {fileID: 11500000, guid: 44949da4da8a4a3b9c1a6e85e95965e1, type: 3}
+  m_Name: New Enemy Behavior Move Step
   m_EditorClassIdentifier: 
-  currentHealth: 20
-  maxHealth: 20
-  movementSpeed: 5
-  movesInSin: 1
-  lookAtPlayer: 0
-  movesTowardPlayer: 0
-  shoots: 0
-  power: 5
-  sinFrequency: 3
-  sinAmplitude: 16
-  damage: 1
+  offset: {x: 0, y: 0}
