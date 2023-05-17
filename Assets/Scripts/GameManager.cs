@@ -57,8 +57,8 @@ public class GameManager : MonoBehaviour
 
     public void SpawnExplosionEffect(Vector3 position)
     {
-        GameObject hitEffectInstance = Instantiate(explosionEffect, position, Quaternion.identity);
-
+        GameObject explosionEffectInstance = Instantiate(explosionEffect, position, Quaternion.identity);
+        Destroy(explosionEffectInstance, 1f);
     }
 
 
