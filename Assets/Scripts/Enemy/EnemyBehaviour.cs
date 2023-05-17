@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "NewEnemyBehaviour")]
-public class EnemyDefinition : ScriptableObject
+[CreateAssetMenu(fileName = "NewEnemyDefinition")]
+public class EnemyBehaviour : ScriptableObject
 {
     public float currentHealth, maxHealth;
 

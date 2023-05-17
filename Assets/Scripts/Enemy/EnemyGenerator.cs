@@ -8,7 +8,7 @@ public class EnemyGenerator : MonoBehaviour
     private Transform[] spawnPositionLimits;
 
     public List<EnemyDefinition> enemyDefinitions;
-    public List<GameObject> enemiesPrefabs;
+    public List<GameObject> enemiesPrefabs, currentWaveEnemies;
 
     public List<float> enemiesPower;
     public float spawnRate;
@@ -24,8 +24,14 @@ public class EnemyGenerator : MonoBehaviour
         temperaturePercentage = temperatureCurve.Evaluate(Time.time);
         spawnPositionLimits = GetComponentsInChildren<Transform>();
         RandomizeEnemySpawnPosition();
-        SpawnEnemy(enemiesPrefabs[0]);
-        SpawnEnemy(enemiesPrefabs[1]);
+        SpawnMultipleEnemies(enemiesPrefabs[1], 30, 0.15f);
+
+        Debug.Log("Amogus");
+        SpawnEnemyAfter(enemiesPrefabs[0], 2);
+        SpawnEnemyAfter(enemiesPrefabs[0], 4);
+
+        SpawnEnemyAfter(enemiesPrefabs[0], 6);
+
     }
     void Update()
     {
@@ -34,7 +40,7 @@ public class EnemyGenerator : MonoBehaviour
         if (currentTime >= spawnRate)
         {
             float randomValue = Random.value;
-
+        /*
             if (randomValue < temperaturePercentage/50)
             {
                 Debug.Log(randomValue);
@@ -47,8 +53,9 @@ public class EnemyGenerator : MonoBehaviour
                 StartCoroutine(SpawnEnemyAfter(enemiesPrefabs[1], Random.Range(0f, spawnRate)));
             }
             currentTime = 0;
+            */
         }
-
+    
     }
 
     public void RandomizeEnemySpawnPosition()
@@ -56,11 +63,13 @@ public class EnemyGenerator : MonoBehaviour
         randomXTransform = Random.Range(spawnPositionLimits[1].position.x, spawnPositionLimits[2].position.x);
     }
 
-    public void SpawnEnemy(GameObject enemyPrefab)
+    public GameObject SpawnEnemy(GameObject enemyPrefab)
     {
         GameObject enemyInstance = Instantiate(enemyPrefab, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
 
         RandomizeEnemySpawnPosition();
+
+        return enemyInstance;
     }
 
     public void InitializeEnemyPowerLevel()
@@ -78,5 +87,30 @@ public class EnemyGenerator : MonoBehaviour
         RandomizeEnemySpawnPosition();
 
     }
+
+    private List<GameObject> SpawnMultipleEnemies(GameObject enemyPrefab,int enemyAmount, float delay){
+        StartCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay));
+        
+        return currentWaveEnemies;
+    }
+    IEnumerator InstantiateMultipleWithDelay(GameObject enemyPrefab, int enemyAmount, float delay)
+    {
+        List<GameObject> spawnedEnemies = new List<GameObject>(); // declare a new List to store the spawned enemies
+
+        GameObject enemyInstance;
+        for (int i = 0; i < enemyAmount; i++)
+        {
+            enemyInstance = SpawnEnemy(enemyPrefab);
+            currentWaveEnemies.Add(enemyInstance);
+            enemyInstance.transform.position = new Vector3(0,enemyInstance.transform.position.y, enemyInstance.transform.position.z);
+            yield return new WaitForSeconds(delay);
+        }
+    }
+
+
+    private void SpawnVerticalWorm(){
+
+    }
+    
 
 }

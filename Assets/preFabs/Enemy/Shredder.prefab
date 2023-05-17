@@ -347,6 +347,7 @@ MonoBehaviour:
   enemyDefinition: {fileID: 11400000, guid: 0c5f0940132b7e448854cfaf851d88ae, type: 2}
   emissionController: {fileID: 2501025203791365145}
   bullet: {fileID: 0}
+  gameManager: {fileID: 0}
   damage: 0
 --- !u!114 &2501025203791365145
 MonoBehaviour:
@@ -362,6 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intensityMultiplier: 1
   increaseIntensityOnCollision: 0
+  hasEmission: 0
 --- !u!1 &5150747562514026709
 GameObject:
   m_ObjectHideFlags: 0
