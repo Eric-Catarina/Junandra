@@ -20,41 +20,16 @@ public class EnemyGenerator : MonoBehaviour
     float currentTime = 0;
     void Start()
     {
-        InitializeEnemyPowerLevel();
         temperaturePercentage = temperatureCurve.Evaluate(Time.time);
         spawnPositionLimits = GetComponentsInChildren<Transform>();
         RandomizeEnemySpawnPosition();
-        SpawnMultipleEnemies(enemiesPrefabs[1], 30, 0.15f);
 
-        Debug.Log("Amogus");
-        SpawnEnemyAfter(enemiesPrefabs[0], 2);
-        SpawnEnemyAfter(enemiesPrefabs[0], 4);
-
-        SpawnEnemyAfter(enemiesPrefabs[0], 6);
-
+        SpawnFirstWave();
     }
     void Update()
     {
-        temperaturePercentage = temperatureCurve.Evaluate(Time.time);
-        currentTime += Time.deltaTime;
-        if (currentTime >= spawnRate)
-        {
-            float randomValue = Random.value;
-        /*
-            if (randomValue < temperaturePercentage/50)
-            {
-                Debug.Log(randomValue);
-                Debug.Log(temperaturePercentage);
-                SpawnEnemy(enemiesPrefabs[0]);
-            }
 
-            for (int i = 0; i < 5; i++)
-            {
-                StartCoroutine(SpawnEnemyAfter(enemiesPrefabs[1], Random.Range(0f, spawnRate)));
-            }
-            currentTime = 0;
-            */
-        }
+
     
     }
 
@@ -63,8 +38,12 @@ public class EnemyGenerator : MonoBehaviour
         randomXTransform = Random.Range(spawnPositionLimits[1].position.x, spawnPositionLimits[2].position.x);
     }
 
-    public GameObject SpawnEnemy(GameObject enemyPrefab)
+    public GameObject SpawnEnemy(GameObject enemyPrefab, float xPosition = default)
     {
+        if (xPosition != default)
+        {
+            randomXTransform = xPosition;
+        }
         GameObject enemyInstance = Instantiate(enemyPrefab, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
 
         RandomizeEnemySpawnPosition();
@@ -72,45 +51,65 @@ public class EnemyGenerator : MonoBehaviour
         return enemyInstance;
     }
 
-    public void InitializeEnemyPowerLevel()
-    {
-        for (int i = 0; i < enemyDefinitions.Count; i++)
-        {
-            enemiesPower.Add(enemyDefinitions[i].power);
-        }
-    }
-
-    private IEnumerator SpawnEnemyAfter(GameObject enemyPrefab, float delay)
+    private IEnumerator SpawnEnemyAfterCoroutine(GameObject enemyPrefab, float delay)
     {
         yield return new WaitForSeconds(delay);
         GameObject enemyInstance = Instantiate(enemyPrefab, new Vector3(randomXTransform, transform.position.y, transform.position.z), enemyPrefab.transform.rotation);
         RandomizeEnemySpawnPosition();
+    }
 
+    private void SpawnEnemyAfter(GameObject enemyPrefab, float delay)
+    {
+        StartCoroutine(SpawnEnemyAfterCoroutine(enemyPrefab, delay));
+        StopCoroutine(SpawnEnemyAfterCoroutine(enemyPrefab, delay));
+    }
+
+    IEnumerator SpawnMultipleEnemiesAfterCoroutine(GameObject enemyPrefab, int enemyAmount, float delay, float secondsToStart, float xPosition = default)
+    {
+        yield return new WaitForSeconds(secondsToStart);
+        StartCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay, xPosition));
+        StopCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay, xPosition));
+    }
+
+    private void SpawnMultipleEnemiesAfter(GameObject enemyPrefab, int enemyAmount, float delay, float secondsToStart, float xPosition = 0)
+    {
+            Debug.Log("xPosition: " + xPosition);
+        StartCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
+        StopCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
     }
 
     private List<GameObject> SpawnMultipleEnemies(GameObject enemyPrefab,int enemyAmount, float delay){
         StartCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay));
-        
+        StopCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay));
         return currentWaveEnemies;
     }
-    IEnumerator InstantiateMultipleWithDelay(GameObject enemyPrefab, int enemyAmount, float delay)
+    IEnumerator InstantiateMultipleWithDelay(GameObject enemyPrefab, int enemyAmount, float delay, float xPosition = default)
     {
         List<GameObject> spawnedEnemies = new List<GameObject>(); // declare a new List to store the spawned enemies
 
         GameObject enemyInstance;
         for (int i = 0; i < enemyAmount; i++)
         {
-            enemyInstance = SpawnEnemy(enemyPrefab);
+            enemyInstance = SpawnEnemy(enemyPrefab, xPosition);
             currentWaveEnemies.Add(enemyInstance);
-            enemyInstance.transform.position = new Vector3(0,enemyInstance.transform.position.y, enemyInstance.transform.position.z);
             yield return new WaitForSeconds(delay);
         }
     }
 
+    private void SpawnFirstWave(){
+        SpawnMultipleEnemies(enemiesPrefabs[1], 10, 1f);
+        SpawnMultipleEnemiesAfter(enemiesPrefabs[1], 30, 0.15f, 10, 0.1f);
 
-    private void SpawnVerticalWorm(){
+        // Set currentWaveEnemiesList position to the left
+ 
+
+        SpawnEnemyAfter(enemiesPrefabs[0], 20);
+        SpawnEnemyAfter(enemiesPrefabs[0], 24);
+
 
     }
-    
+    // Write a function that Spawn 100 enemies with a delay of 0.1 seconds between each one at position 0
 
+
+    
 }
