@@ -50,7 +50,7 @@ public class ItemBehaviour : MonoBehaviour
             return;
         }
         // 10% chance of increasing player max health
-        else if (randomNumber >=85)
+        else if (randomNumber>= 75)
         {
             // Regen player hp by 1
             playerController.IncreaseMaxHealth(1);
