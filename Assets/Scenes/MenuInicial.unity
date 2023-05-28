@@ -660,8 +660,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239552736}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1692419203}
+        m_TargetAssemblyTypeName: OptionsPanel, Assembly-CSharp
         m_MethodName: OpenOptionsPanel
         m_Mode: 1
         m_Arguments:
@@ -864,17 +864,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2a8ba45d9d15154c89fc94c58f78fc3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1239552736 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: -1113536410261069194, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
-  m_PrefabInstance: {fileID: 613663375}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b28d583f5b8c16c479c64b3206c9903b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1274599289 stripped
@@ -1173,6 +1162,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5032816185239045785, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
   m_PrefabInstance: {fileID: 5032816184649761307}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1692419203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5157645882305226798, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
+  m_PrefabInstance: {fileID: 5032816184649761307}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692419201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91ab12975d6856e4089b654719fdb339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1722636966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1556,10 +1556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994021682}
     m_Modifications:
-    - target: {fileID: 5032816184844533305, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1239552735}
     - target: {fileID: 5032816185239045785, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1648,17 +1644,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Options
       objectReference: {fileID: 0}
-    - target: {fileID: 5032816185592911202, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1239552735}
-    - target: {fileID: 5032816185897215668, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1239552736}
-    - target: {fileID: 5032816186087622948, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}
-      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1239552735}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 020a3ae25f46b2541be6042393aa5626, type: 3}

@@ -73,7 +73,6 @@ public class EnemyGenerator : MonoBehaviour
 
     private void SpawnMultipleEnemiesAfter(GameObject enemyPrefab, int enemyAmount, float delay, float secondsToStart, float xPosition = 0)
     {
-            Debug.Log("xPosition: " + xPosition);
         StartCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
         StopCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
     }

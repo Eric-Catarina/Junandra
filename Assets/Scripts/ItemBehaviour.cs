@@ -27,7 +27,6 @@ public class ItemBehaviour : MonoBehaviour
         if (randomNumber < 30)
         {
             playerController.ActivateBubbleShield();
-            Debug.Log("Bubble shield activated");
             Destroy(gameObject);
             return;
         }
@@ -36,7 +35,6 @@ public class ItemBehaviour : MonoBehaviour
         else if (randomNumber >= 30 && randomNumber < 60)
         {
             playerController.IncreaseAttackSpeed(attackSpeedIncrease);
-            Debug.Log("Attack speed increased");
             Destroy(gameObject);
             return;
         }
@@ -45,7 +43,6 @@ public class ItemBehaviour : MonoBehaviour
         else if (randomNumber >= 60 && randomNumber < 75)
         {
             playerController.IncreaseMovementSpeed(movement_speed);
-            Debug.Log("Movement speed increased");
             Destroy(gameObject);
             return;
         }

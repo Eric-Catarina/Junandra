@@ -8,31 +8,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private SoundManager soundManager;
     
-    [SerializeField]
-    private Slider musicSlider, sfxSlider, generalSlider;
+    public Slider musicSlider, sfxSlider, generalSlider;
 
-    [SerializeField]
-    private GameObject optionsPanel;
+    public GameObject optionsPanel;
     
-
-
-    void Awake()
-    {
-        //soundManager.MusicVolumeInitialized += SetMusicSliderValue;
-    }
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    void OnDestroy()
-    {
-        //soundManager.MusicVolumeInitialized -= SetMusicSliderValue;
-    }
 
     public void SetMusicSliderValue(float value)
     {
@@ -46,14 +25,39 @@ public class UIManager : MonoBehaviour
     {
         generalSlider.value = value;
     }
+    public void UpdateSliderValues()
+    {
+        Debug.Log(soundManager);
+        SetMusicSliderValue(soundManager.GetMusicVolume());
+        SetSFXSliderValue(soundManager.GetSFXVolume());
+        SetGeneralSliderValue(soundManager.GetMasterVolume());
+    }
 
     public void OpenOptionsPanel()
     {
+        optionsPanel = FindObjectOfType<OptionsPanel>(true).gameObject;
+        InitializeSliders();
+        soundManager = FindObjectOfType<SoundManager>();
+        UpdateSliderValues();
         optionsPanel.SetActive(true);
     }
     public void CloseOptionsPanel()
     {
+        optionsPanel = FindObjectOfType<OptionsPanel>(true).gameObject;
         optionsPanel.SetActive(false);
     }
 
+    public void SetOptionsPanel(GameObject optionsPanel)
+    {
+        this.optionsPanel = optionsPanel;
+    }
+
+    // Get the sliders references from the optionsPanel
+    public void InitializeSliders()
+    {
+        Slider[] sliders = optionsPanel.GetComponentsInChildren<Slider>();
+        generalSlider = sliders[0];
+        musicSlider = sliders[1];
+        sfxSlider = sliders[2];
+    }
 }

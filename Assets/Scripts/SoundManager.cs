@@ -69,6 +69,19 @@ public class SoundManager : MonoBehaviour
         uiManager.SetSFXSliderValue(sfxVolume);
     }
 
+    public float GetMasterVolume()
+    {
+        return masterVolume;
+    }
+    public float GetMusicVolume()
+    {
+        return musicVolume;
+    }
+    public float GetSFXVolume()
+    {
+        return sfxVolume;
+    }
+
     void Update()
     {
         
