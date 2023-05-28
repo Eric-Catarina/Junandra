@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitEffect: {fileID: 7284146934099373600, guid: c0396ecefb8c04a429558867dc5a3d2f, type: 3}
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 5729941500362766411, guid: 4c066cedbcf72cb4792f75dbccfd971c, type: 3}
 --- !u!114 &-6901300186164992625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +245,7 @@ MonoBehaviour:
   musicSlider: {fileID: 0}
   sfxSlider: {fileID: 0}
   generalSlider: {fileID: 0}
+  optionsPanel: {fileID: 0}
 --- !u!82 &7650028469344859273
 AudioSource:
   m_ObjectHideFlags: 0
