@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionsPanel;
     
-
     public void SetMusicSliderValue(float value)
     {
         musicSlider.value = value;

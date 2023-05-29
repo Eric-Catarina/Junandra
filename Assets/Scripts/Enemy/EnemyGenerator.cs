@@ -9,6 +9,9 @@ public class EnemyGenerator : MonoBehaviour
 
     public List<EnemyDefinition> enemyDefinitions;
     public List<GameObject> enemiesPrefabs, currentWaveEnemies;
+    public List<EnemyWave> enemyWaves;
+
+    public EnemyWave currentEnemyWave;
 
     public List<float> enemiesPower;
     public float spawnRate;
@@ -77,9 +80,9 @@ public class EnemyGenerator : MonoBehaviour
         StopCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
     }
 
-    private List<GameObject> SpawnMultipleEnemies(GameObject enemyPrefab,int enemyAmount, float delay){
-        StartCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay));
-        StopCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay));
+    private List<GameObject> SpawnMultipleEnemies(EnemyWave enemyWave){
+        StartCoroutine(InstantiateMultipleWithDelay(enemyWave.enemyPrefab, enemyWave.EnemyAmount, enemyWave.DelayBetweenSpawns));
+        StopCoroutine(InstantiateMultipleWithDelay(enemyWave.enemyPrefab, enemyWave.EnemyAmount, enemyWave.DelayBetweenSpawns));
         return currentWaveEnemies;
     }
     IEnumerator InstantiateMultipleWithDelay(GameObject enemyPrefab, int enemyAmount, float delay, float xPosition = default)
@@ -96,14 +99,27 @@ public class EnemyGenerator : MonoBehaviour
     }
 
     private void SpawnFirstWave(){
-        SpawnMultipleEnemies(enemiesPrefabs[1], 10, 1f);
-        SpawnMultipleEnemiesAfter(enemiesPrefabs[1], 30, 0.15f, 10, 0.1f);
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[1])
+            .WithDuration(10f)
+            .WithAmount(30)
+            .WithDelay(0.5f)
+            .WithXPosition(-2.5f)
+            .Build();
+        SpawnMultipleEnemies(currentEnemyWave);
+
+
+
+
+
+        //SpawnMultipleEnemies(enemiesPrefabs[1], 10, 1f);
+        //SpawnMultipleEnemiesAfter(enemiesPrefabs[1], 30, 0.15f, 10, 0.1f);
 
         // Set currentWaveEnemiesList position to the left
  
 
-        SpawnEnemyAfter(enemiesPrefabs[0], 20);
-        SpawnEnemyAfter(enemiesPrefabs[0], 24);
+        //SpawnEnemyAfter(enemiesPrefabs[0], 20);
+        //SpawnEnemyAfter(enemiesPrefabs[0], 24);
 
 
     }
