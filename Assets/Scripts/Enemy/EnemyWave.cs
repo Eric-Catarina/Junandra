@@ -1,21 +1,16 @@
 using UnityEngine;
+
 public class EnemyWaveBuilder
 {
     private GameObject _enemyPrefab;
-    private float _duration;
     private int _enemyAmount;
     private float _delayBetweenSpawns;
     private float _xPosition;
+    private float _secondsToStart;
 
     public EnemyWaveBuilder WithPrefab(GameObject enemyPrefab)
     {
         _enemyPrefab = enemyPrefab;
-        return this;
-    }
-
-    public EnemyWaveBuilder WithDuration(float duration)
-    {
-        _duration = duration;
         return this;
     }
 
@@ -37,33 +32,38 @@ public class EnemyWaveBuilder
         return this;
     }
 
+    public EnemyWaveBuilder WithSecondsToStart(float secondsToStart)
+    {
+        _secondsToStart = secondsToStart;
+        return this;
+    }
+
     public EnemyWave Build()
     {
-        return new EnemyWave(_enemyPrefab, _duration, _enemyAmount, _delayBetweenSpawns, _xPosition);
+        return new EnemyWave(_enemyPrefab, _enemyAmount, _delayBetweenSpawns, _xPosition, _secondsToStart);
     }
 }
 
 public class EnemyWave 
 {
     private GameObject _enemiePrefab;
-    private float _duration;
     private int _enemyAmount;
     private float _delayBetweenSpawns;
     private float _xPosition;
+    private float _secondsToStart;
 
-    public EnemyWave(GameObject prefab, float duration, int amount, float delay, float xPos)
+    public EnemyWave(GameObject prefab, int amount, float delay, float xPos, float secondsToStart)
     {
         _enemiePrefab = prefab;
-        _duration = duration;
         _enemyAmount = amount;
         _delayBetweenSpawns = delay;
         _xPosition = xPos;
+        _secondsToStart = secondsToStart;
     }
 
     public GameObject enemyPrefab { get { return _enemiePrefab; } }
-    public float Duration { get { return _duration; } }
-    //public float SecondsToStart { get { return _secondsToStart}}
     public int EnemyAmount { get { return _enemyAmount; } }
     public float DelayBetweenSpawns { get { return _delayBetweenSpawns; } }
     public float XPosition { get { return _xPosition; } }
+    public float SecondsToStart { get { return _secondsToStart; } }
 }

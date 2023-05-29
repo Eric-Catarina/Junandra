@@ -28,6 +28,7 @@ public class EnemyGenerator : MonoBehaviour
         RandomizeEnemySpawnPosition();
 
         SpawnFirstWave();
+        SpawnSecondWave();
     }
     void Update()
     {
@@ -67,29 +68,35 @@ public class EnemyGenerator : MonoBehaviour
         StopCoroutine(SpawnEnemyAfterCoroutine(enemyPrefab, delay));
     }
 
-    IEnumerator SpawnMultipleEnemiesAfterCoroutine(GameObject enemyPrefab, int enemyAmount, float delay, float secondsToStart, float xPosition = default)
+    IEnumerator SpawnMultipleEnemiesAfterCoroutine(EnemyWave enemyWave)
     {
-        yield return new WaitForSeconds(secondsToStart);
-        StartCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay, xPosition));
-        StopCoroutine(InstantiateMultipleWithDelay(enemyPrefab, enemyAmount, delay, xPosition));
+        yield return new WaitForSeconds(enemyWave.SecondsToStart);
+        StartCoroutine(InstantiateMultipleWithDelay(enemyWave));
+        StopCoroutine(InstantiateMultipleWithDelay(enemyWave));
     }
 
-    private void SpawnMultipleEnemiesAfter(GameObject enemyPrefab, int enemyAmount, float delay, float secondsToStart, float xPosition = 0)
+    private void SpawnMultipleEnemiesAfter(EnemyWave enemyWave)
     {
-        StartCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
-        StopCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyPrefab, enemyAmount, delay, secondsToStart, xPosition));
+        StartCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyWave));
+        StopCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyWave));
     }
 
     private List<GameObject> SpawnMultipleEnemies(EnemyWave enemyWave){
-        StartCoroutine(InstantiateMultipleWithDelay(enemyWave.enemyPrefab, enemyWave.EnemyAmount, enemyWave.DelayBetweenSpawns));
-        StopCoroutine(InstantiateMultipleWithDelay(enemyWave.enemyPrefab, enemyWave.EnemyAmount, enemyWave.DelayBetweenSpawns));
+        StartCoroutine(InstantiateMultipleWithDelay(enemyWave));
+        StopCoroutine(InstantiateMultipleWithDelay(enemyWave));
         return currentWaveEnemies;
     }
-    IEnumerator InstantiateMultipleWithDelay(GameObject enemyPrefab, int enemyAmount, float delay, float xPosition = default)
+    IEnumerator InstantiateMultipleWithDelay(EnemyWave enemyWave)
     {
         List<GameObject> spawnedEnemies = new List<GameObject>(); // declare a new List to store the spawned enemies
 
         GameObject enemyInstance;
+        GameObject enemyPrefab = enemyWave.enemyPrefab;
+        int enemyAmount = enemyWave.EnemyAmount;
+        float delay = enemyWave.DelayBetweenSpawns;
+        float xPosition = enemyWave.XPosition;
+
+
         for (int i = 0; i < enemyAmount; i++)
         {
             enemyInstance = SpawnEnemy(enemyPrefab, xPosition);
@@ -101,29 +108,33 @@ public class EnemyGenerator : MonoBehaviour
     private void SpawnFirstWave(){
         currentEnemyWave = new EnemyWaveBuilder()
             .WithPrefab(enemiesPrefabs[1])
-            .WithDuration(10f)
             .WithAmount(30)
-            .WithDelay(0.5f)
-            .WithXPosition(-2.5f)
+            .WithDelay(0.7f)
+            .WithSecondsToStart(0)
             .Build();
-        SpawnMultipleEnemies(currentEnemyWave);
-
-
-
-
-
-        //SpawnMultipleEnemies(enemiesPrefabs[1], 10, 1f);
-        //SpawnMultipleEnemiesAfter(enemiesPrefabs[1], 30, 0.15f, 10, 0.1f);
-
-        // Set currentWaveEnemiesList position to the left
- 
-
-        //SpawnEnemyAfter(enemiesPrefabs[0], 20);
-        //SpawnEnemyAfter(enemiesPrefabs[0], 24);
-
-
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
     }
-    // Write a function that Spawn 100 enemies with a delay of 0.1 seconds between each one at position 0
+
+    private void SpawnSecondWave(float secondsToStart = 21){
+    currentEnemyWave = new EnemyWaveBuilder()
+        .WithPrefab(enemiesPrefabs[1])
+        .WithAmount(70)
+        .WithDelay(0.07f)
+        .WithSecondsToStart(secondsToStart)
+        .WithXPosition(0.01f)
+        .Build();
+    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    }
+
+    private void SpawnThirdWave(float secondsToStart = 55){
+    currentEnemyWave = new EnemyWaveBuilder()
+        .WithPrefab(enemiesPrefabs[1])
+        .WithAmount(6)
+        .WithDelay(5)
+        .WithSecondsToStart(secondsToStart)
+        .Build();
+    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    }
 
 
     
