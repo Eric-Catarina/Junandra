@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     private float amplitude ;
     private float frequency ;
 
-    private float power;
+    public float power;
 
     private Rigidbody rb;
 
