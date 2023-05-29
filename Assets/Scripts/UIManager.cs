@@ -27,7 +27,6 @@ public class UIManager : MonoBehaviour
     }
     public void UpdateSliderValues()
     {
-        Debug.Log(soundManager);
         SetMusicSliderValue(soundManager.GetMusicVolume());
         SetSFXSliderValue(soundManager.GetSFXVolume());
         SetGeneralSliderValue(soundManager.GetMasterVolume());
