@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.17787838, g: 0.22270948, b: 0.30484903, a: 1}
+  m_IndirectSpecularColor: {r: 0.17787792, g: 0.22270906, b: 0.30484805, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1272,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.501587
+      value: -17.501648
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1866,6 +1866,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
+      propertyPath: enemiesPrefabs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 2343006732696286530, guid: e8510448a325d614597ac4ccf28d402d, type: 3}
     - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: temperatureCurve.m_Curve.Array.data[1].time
       value: 90

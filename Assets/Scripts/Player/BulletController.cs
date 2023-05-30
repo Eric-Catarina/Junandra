@@ -59,7 +59,7 @@ public class BulletController : MonoBehaviour
 
         gameManager.SpawnHitEffect(transform.position);
         
-        gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource);   
+        gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.05f);   
         Destroy(gameObject);
 
     }
