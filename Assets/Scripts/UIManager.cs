@@ -10,7 +10,7 @@ public class UIManager : MonoBehaviour
     
     public Slider musicSlider, sfxSlider, generalSlider;
 
-    public GameObject optionsPanel;
+    public GameObject optionsPanel, creditsPanel;
     
     public void SetMusicSliderValue(float value)
     {
@@ -57,5 +57,16 @@ public class UIManager : MonoBehaviour
         generalSlider = sliders[0];
         musicSlider = sliders[1];
         sfxSlider = sliders[2];
+    }
+
+    public void OpenCreditsPanel()
+    {
+        creditsPanel = FindObjectOfType<Credits>(true).gameObject;
+        creditsPanel.SetActive(true);
+    }
+    public void CloseCreditsPanel()
+    {
+        creditsPanel = FindObjectOfType<Credits>(true).gameObject;
+        creditsPanel.SetActive(false);
     }
 }
