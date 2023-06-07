@@ -65,7 +65,6 @@ public class UIManager : MonoBehaviour
     public void OpenCreditsPanel()
     {
         creditsPanel = FindObjectOfType<Credits>(true).gameObject;
-        Debug.Log("Opening credits panel");
         creditsPanel.SetActive(true);
     }
     public void CloseCreditsPanel()

@@ -19,4 +19,5 @@ public class EnemyDefinition : ScriptableObject
 
     public float sinFrequency, sinAmplitude;
     public float damage;
+    public List<GameObject> possibleItemDrops;
 }

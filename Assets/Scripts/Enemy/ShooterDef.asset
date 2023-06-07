@@ -19,7 +19,8 @@ MonoBehaviour:
   lookAtPlayer: 1
   movesTowardPlayer: 0
   shoots: 1
-  power: 25
+  power: 85
   sinFrequency: 5
   sinAmplitude: 6
   damage: 1
+  possibleItemDrops: []

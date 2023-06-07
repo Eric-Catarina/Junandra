@@ -9,20 +9,26 @@ public class EmissionController : MonoBehaviour
     public bool hasEmission;
     float baseIntensity;
 
+    public Color[] rarityColors = new Color[] {
+        new Color(0.5f, 0.5f, 0.5f),   // Gray
+        new Color(0f, 1f, 0f),         // Green
+        new Color(0f, 0f, 1f),         // Blue
+        new Color(1f, 0.5f, 0f)        // Orange
+    };
     private static readonly int EmissiveColorID = Shader.PropertyToID("_EmissionColor");
     private Material materialInstance;
     private Color initialEmissiveColor;
+    [SerializeField]
+    private Renderer myRenderer;
 
     private void Start()
     {
         if (hasEmission)
         {
+            TryGetComponent<Renderer>(out myRenderer);
 
-            if (!TryGetComponent<Renderer>(out Renderer renderer))
-            {
-            }
+            materialInstance = myRenderer.material;
 
-            materialInstance = renderer.material;
             initialEmissiveColor = materialInstance.GetColor(EmissiveColorID);
             baseIntensity = initialEmissiveColor.r;
         }
@@ -61,5 +67,12 @@ public class EmissionController : MonoBehaviour
     public void Flash(float intensity)
     {
         StartCoroutine(FlashCoroutine(intensity));
+    }
+    public void SetColor(Color color)
+    {
+        myRenderer.material.SetColor("_EmissionColor", color);
+    }
+    public Color GetColor(){
+        return myRenderer.material.GetColor("_EmissionColor");
     }
 }
