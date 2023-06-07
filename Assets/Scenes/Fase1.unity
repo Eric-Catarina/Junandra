@@ -194,6 +194,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1516766734}
     - target: {fileID: -1113536410261069194, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: creditsPanel
+      value: 
+      objectReference: {fileID: 46070957}
+    - target: {fileID: -1113536410261069194, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: optionsPanel
       value: 
       objectReference: {fileID: 1516766736}

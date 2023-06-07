@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour
 
     public GameObject optionsPanel, creditsPanel;
     
+    void Start(){
+        StartCoroutine(OpenCreditsPanelAfterDelay(135f)) ;
+    }
     public void SetMusicSliderValue(float value)
     {
         musicSlider.value = value;
@@ -62,11 +65,19 @@ public class UIManager : MonoBehaviour
     public void OpenCreditsPanel()
     {
         creditsPanel = FindObjectOfType<Credits>(true).gameObject;
+        Debug.Log("Opening credits panel");
         creditsPanel.SetActive(true);
     }
     public void CloseCreditsPanel()
     {
         creditsPanel = FindObjectOfType<Credits>(true).gameObject;
         creditsPanel.SetActive(false);
+    }
+    
+    //Wait for 3 seconds then open credits panel
+    public IEnumerator OpenCreditsPanelAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        OpenCreditsPanel();
     }
 }
