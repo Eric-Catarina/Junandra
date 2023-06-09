@@ -19,9 +19,8 @@ public class BuffItem : MonoBehaviour
     void Start()
     {
         emissionController = GetComponent<EmissionController>();
-        Debug.Log(emissionController.GetColor());
-        emissionController.SetColor(emissionController.rarityColors[(int)rarity]);
-        emissionController.SetIntensity(2);
+        Color emissiveColor = emissionController.rarityColors[(int)rarity];
+        emissionController.SetColorAndIntensity(emissiveColor, 3);
     }
 
 }

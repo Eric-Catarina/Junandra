@@ -16,6 +16,7 @@ public class EmissionController : MonoBehaviour
         new Color(1f, 0.5f, 0f)        // Orange
     };
     private static readonly int EmissiveColorID = Shader.PropertyToID("_EmissionColor");
+    [SerializeField]
     private Material materialInstance;
     private Color initialEmissiveColor;
     [SerializeField]
@@ -44,7 +45,7 @@ public class EmissionController : MonoBehaviour
     {
         if (hasEmission){
             Color newEmissiveColor = initialEmissiveColor * intensityMultiplier;
-            materialInstance.SetColor(EmissiveColorID, newEmissiveColor);
+            myRenderer.material.SetColor(EmissiveColorID, newEmissiveColor);
         }
     }
 
@@ -70,7 +71,11 @@ public class EmissionController : MonoBehaviour
     }
     public void SetColor(Color color)
     {
-        myRenderer.material.SetColor("_EmissionColor", color);
+        materialInstance.SetColor("_EmissionColor", color);
+    }
+    public void SetColorAndIntensity(Color color,float intensity)
+    {
+        materialInstance.SetColor("_EmissionColor", color * intensity);
     }
     public Color GetColor(){
         return myRenderer.material.GetColor("_EmissionColor");

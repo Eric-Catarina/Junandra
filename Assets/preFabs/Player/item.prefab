@@ -165,4 +165,5 @@ MonoBehaviour:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
   - {r: 1, g: 0.5, b: 0, a: 1}
+  materialInstance: {fileID: 2100000, guid: 30cf51e5180d3184f89fb47e5b163efd, type: 2}
   myRenderer: {fileID: 3792064654811753606}
