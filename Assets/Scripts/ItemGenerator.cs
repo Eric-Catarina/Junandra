@@ -47,7 +47,7 @@ public class ItemGenerator : MonoBehaviour
         {
 
             GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity);
-            currentRarityLevel = Random.Range(1, 5);
+            currentRarityLevel = Random.Range(1, 4);
             BuffItem.Rarity rarity;
 
             switch (currentRarityLevel)
@@ -59,9 +59,6 @@ public class ItemGenerator : MonoBehaviour
                     rarity =  BuffItem.Rarity.Rare;
                     break;
                 case 3:
-                    rarity =  BuffItem.Rarity.Uncommon;
-                    break;
-                case 4:
                     rarity =  BuffItem.Rarity.Legendary;
                     break;
                 default:

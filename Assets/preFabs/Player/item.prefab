@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3711512839980117468}
   - component: {fileID: 3792064654811753606}
   - component: {fileID: 7487662395840965227}
-  - component: {fileID: 417686999893929374}
   - component: {fileID: -8534885453262987395}
   - component: {fileID: 5267271185948281903}
   - component: {fileID: 1700585562424049346}
@@ -101,20 +100,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &417686999893929374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396682609070937841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e79859cfa6e74449a1079a3616ecc70, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement_speed: 1.1
-  attackSpeedIncrease: 1.1
 --- !u!54 &-8534885453262987395
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -143,6 +128,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cf33d2aa8f7e9244b1ffbb179dfca62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rarityColors:
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.5, b: 0, a: 1}
+  possibleBuffs: []
+  movement_speed: 1.1
+  attackSpeedIncrease: 1.1
+  emissiveColor: {r: 0, g: 0, b: 0, a: 0}
   rarity: 2
   emissionController: {fileID: 1700585562424049346}
 --- !u!114 &1700585562424049346
@@ -160,10 +153,6 @@ MonoBehaviour:
   intensityMultiplier: 1
   increaseIntensityOnCollision: 0
   hasEmission: 1
-  rarityColors:
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 1, g: 0.5, b: 0, a: 1}
   materialInstance: {fileID: 2100000, guid: 30cf51e5180d3184f89fb47e5b163efd, type: 2}
+  initialEmissiveColor: {r: 0, g: 0, b: 0, a: 0}
   myRenderer: {fileID: 3792064654811753606}
