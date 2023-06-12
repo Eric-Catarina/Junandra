@@ -9,16 +9,10 @@ public class EmissionController : MonoBehaviour
     public bool hasEmission;
     float baseIntensity;
 
-    public Color[] rarityColors = new Color[] {
-        new Color(0.5f, 0.5f, 0.5f),   // Gray
-        new Color(0f, 1f, 0f),         // Green
-        new Color(0f, 0f, 1f),         // Blue
-        new Color(1f, 0.5f, 0f)        // Orange
-    };
     private static readonly int EmissiveColorID = Shader.PropertyToID("_EmissionColor");
     [SerializeField]
     private Material materialInstance;
-    private Color initialEmissiveColor;
+    public Color initialEmissiveColor;
     [SerializeField]
     private Renderer myRenderer;
 
@@ -44,12 +38,12 @@ public class EmissionController : MonoBehaviour
     private void UpdateEmission()
     {
         if (hasEmission){
-            Color newEmissiveColor = initialEmissiveColor * intensityMultiplier;
+            Color newEmissiveColor = GetColor() * intensityMultiplier;
             myRenderer.material.SetColor(EmissiveColorID, newEmissiveColor);
         }
     }
 
-    public IEnumerator FlashCoroutine(float intensity)
+    public IEnumerator FlashCoroutine(float intensity, Color color = default)
     {
         float flashDuration = 1f;
         float timer = 0f;
@@ -57,17 +51,17 @@ public class EmissionController : MonoBehaviour
         while (timer < flashDuration)
         {
             float lerpValue = Mathf.Lerp(1f, intensity, timer / flashDuration);
-            materialInstance.SetColor("_EmissionColor", initialEmissiveColor * lerpValue * baseIntensity);
+            materialInstance.SetColor("_EmissionColor", color * lerpValue * intensity);
             timer += Time.deltaTime;
             yield return null;
         }
 
-        materialInstance.SetColor("_EmissionColor", initialEmissiveColor * baseIntensity);
+        materialInstance.SetColor("_EmissionColor", initialEmissiveColor);
     }
 
-    public void Flash(float intensity)
+    public void Flash(float intensity, Color color = default)
     {
-        StartCoroutine(FlashCoroutine(intensity));
+        StartCoroutine(FlashCoroutine(intensity, color));
     }
     public void SetColor(Color color)
     {

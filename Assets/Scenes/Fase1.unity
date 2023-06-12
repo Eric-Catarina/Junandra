@@ -721,7 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1396682609070937841, guid: 36afec19b59ce484b9426464f29d6b5c, type: 3}
-  rangeFloat: 1.73
+  rangeFloat: 0.43
 --- !u!4 &664925011
 Transform:
   m_ObjectHideFlags: 0

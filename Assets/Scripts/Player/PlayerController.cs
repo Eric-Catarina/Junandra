@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private EmissionController emissionController;
     private GameManager gameManager;
+    private Color oldColor, blinkColor;
 
 
     void Start()
@@ -107,7 +108,6 @@ public class PlayerController : MonoBehaviour
 
     public float IncreaseMaxHealth(float health)
     {
-        Blink();
         maxHealth += health;
         ChangeHealthTextColor();
         healthText.text = "Health: " + currentHealth.ToString();
@@ -115,14 +115,12 @@ public class PlayerController : MonoBehaviour
     }
     public void IncreaseAttackSpeed(float attackSpeed)
     {
-        Blink();
         gunSystem.IncreaseAttackSpeed(attackSpeed);
         ChangeBuffText("Attack Speed Increased!");
     }
 
     public void IncreaseMovementSpeed(float movementSpeed)
     {
-        Blink();
         this.movementSpeed *= movementSpeed;
         ChangeBuffText("Movement Speed Increased!");
     }
@@ -130,7 +128,6 @@ public class PlayerController : MonoBehaviour
     // Instantiate shield bubble inside player
     public void ActivateBubbleShield()
     {
-        Blink();
         ChangeBuffText("Bubble Shield Activated!");
         bubbleShieldHealth = bubbleShieldMaxHealth;
         if (haveShieldBubble)
@@ -205,22 +202,23 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Blink(){
+    public void Blink(Color color = default){
+        blinkColor = color;
+        StopCoroutine(BlinkCoroutine());
         StartCoroutine(BlinkCoroutine());
     }
 
     private IEnumerator BlinkCoroutine(){
-        emissionController.SetIntensity(5);
-
+        oldColor = blinkColor;
+        emissionController.SetColorAndIntensity(blinkColor, 30);
         for (int i = 100; i > 0; i--){
-            float emissao = i/1.7f;
-            if (emissao < 1.2f){
-                emissao = 1.2f;
-            }
-            emissionController.SetIntensity(emissao);
+            float emissao = i/3;
+            if (emissao < 1.2f) emissao = 1.2f;
+            emissionController.SetColorAndIntensity(blinkColor, emissao);
             yield return new WaitForSeconds(0.001f);
             
         }
+        emissionController.SetColor(emissionController.initialEmissiveColor);
     }
 
 

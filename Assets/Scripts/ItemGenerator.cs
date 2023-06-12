@@ -12,6 +12,32 @@ public class ItemGenerator : MonoBehaviour
         StartCoroutine(SpawnItem());
     }
 
+    private int Choose(float[] probabilities)
+    {
+        float total = 0;
+
+        foreach (float elem in probabilities)
+        {
+            total += elem;
+        }
+
+        float randomPoint = UnityEngine.Random.value * total;
+
+        for (int i = 0; i < probabilities.Length; i++)
+        {
+            if (randomPoint < probabilities[i])
+            {
+                return i;
+            }
+            else
+            {
+                randomPoint -= probabilities[i];
+            }
+        }
+
+        return probabilities.Length - 1;
+    }
+
 
 
     // Spawn a item every 1 second
@@ -19,6 +45,7 @@ public class ItemGenerator : MonoBehaviour
     {
         while (true)
         {
+
             GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity);
             currentRarityLevel = Random.Range(1, 5);
             BuffItem.Rarity rarity;
@@ -30,6 +57,9 @@ public class ItemGenerator : MonoBehaviour
                     break;
                 case 2:
                     rarity =  BuffItem.Rarity.Rare;
+                    break;
+                case 3:
+                    rarity =  BuffItem.Rarity.Uncommon;
                     break;
                 case 4:
                     rarity =  BuffItem.Rarity.Legendary;
