@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float tiltAngle = 45f;
     public float horizontalInput;
     public float verticalInput;
+    public bool hasSlowingShots, hasFreezingShots, hasExplosiveShots, hasTripleShots, hasCurveShots;
+    public float healthRegeneration = 0;
     public Quaternion originalRotation;
 
     // Bubble Shield

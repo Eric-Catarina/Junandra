@@ -19,8 +19,8 @@ public class BuffItem : MonoBehaviour
     public static class RarityBuffs
     {
         public static List<string> commonPossibleBuffs = new List<string>() { "IncreaseMoveSpeed", "IncreaseBulletSpeed", "IncreaseDamage", "IncreaseAttackSpeed" };
-        public static List<string> rarePossibleBuffs = new List<string>() { "BubbleShield", "IncreaseCriticalChance", "IncreaseCritical", "IncreaseRadius" };
-        public static List<string> legendaryPossibleBuffs = new List<string>() { "TripleShots", "HealthRegeneration", "CurveShots" };
+        public static List<string> rarePossibleBuffs = new List<string>() { "BubbleShield", "IncreaseCriticalChance", "IncreaseCritical", "IncreaseRadius", "SlowingShots" };
+        public static List<string> legendaryPossibleBuffs = new List<string>() { "TripleShots", "HealthRegeneration", "CurveShots", "FreezingShots" };
 
 
         private static Dictionary<Rarity, List<string>> buffTable = new Dictionary<Rarity, List<string>>()
@@ -47,11 +47,6 @@ public class BuffItem : MonoBehaviour
     void Start()
     {
         possibleBuffs = RarityBuffs.GetPossibleBuffs(rarity);
-        foreach (string buff in possibleBuffs)
-        {
-            Debug.Log(buff);
-        }
-        Debug.Log("________________________________________");
 
         emissionController = GetComponent<EmissionController>();
         emissiveColor = rarityColors[(int)rarity];
@@ -70,6 +65,7 @@ public class BuffItem : MonoBehaviour
             return;
         }
         collision.gameObject.GetComponent<PlayerController>().Blink(emissiveColor);
+        collision.gameObject.GetComponent<BuffApplier>().Invoke(possibleBuffs[Random.Range(0,possibleBuffs.Count)],0);
 
 
         float randomNumber = RollRandomNumber();

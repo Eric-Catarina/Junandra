@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class AttributeManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float movementSpeed, maxHealth, currentHealth, healthRegeneration,
+     damage, bulletSpeed, attackSpeed, criticalChance, criticalDamage, explosionRadius,
+     bulletSlowMultiplier, bulletSlowDuration; 
     void Start()
     {
         
