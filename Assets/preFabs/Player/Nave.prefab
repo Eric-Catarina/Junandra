@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: -2146826100620424466}
   - component: {fileID: 2512795489767477087}
   - component: {fileID: 5557585314633459396}
-  - component: {fileID: 4305323976563108592}
   - component: {fileID: 7478797245274840901}
   m_Layer: 6
   m_Name: Nave
@@ -234,10 +233,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  fireRate: 15
   spread: 1
   range: 1000
   timeBetweenShots: 0
+  bulletSpeed: 0
+  attackSpeed: 20
+  criticalChance: 1
+  criticalDamage: 2
+  explosionRadius: 0
+  bulletSlowMultiplier: 0
+  bulletSlowDuration: 0
+  hasSlowingShots: 0
+  hasFreezingShots: 0
+  hasExplosiveShots: 0
+  hasTripleShots: 0
+  hasCurveShots: 0
   bulletsPerTap: 1
   allowButtonHold: 1
   tryingToShoot: 0
@@ -267,6 +277,7 @@ MonoBehaviour:
   tiltAngle: 45
   horizontalInput: 0
   verticalInput: 0
+  healthRegeneration: 0
   originalRotation: {x: 0, y: 0, z: 0, w: 0}
   shieldBubble: {fileID: 186346888372926767, guid: 94e323fb77a9d574c921583a41a1fd49, type: 3}
   buffText: {fileID: 0}
@@ -306,18 +317,6 @@ MonoBehaviour:
   materialInstance: {fileID: 0}
   initialEmissiveColor: {r: 0, g: 0, b: 0, a: 0}
   myRenderer: {fileID: 0}
---- !u!114 &4305323976563108592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7564541382722793098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c13ed53e0bc2d304aa2697b3f3e18258, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7478797245274840901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,3 +329,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadf9e115f1f41d449a416cf50779dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  gunSystem: {fileID: 0}
+  moveSpeedMultiplier: 1.1
+  bulletSpeedMultiplier: 1.1
+  damageMultiplier: 1.1
+  attackSpeedMultiplier: 1.1
+  criticalChanceIncrease: 1.1
+  criticalDamageMultiplier: 1.1
+  radiusMultiplier: 1.1
+  healRegenerationAmount: 0.1

@@ -20,7 +20,7 @@ public class BuffItem : MonoBehaviour
     {
         public static List<string> commonPossibleBuffs = new List<string>() { "IncreaseMoveSpeed", "IncreaseBulletSpeed", "IncreaseDamage", "IncreaseAttackSpeed" };
         public static List<string> rarePossibleBuffs = new List<string>() { "BubbleShield", "IncreaseCriticalChance", "IncreaseCritical", "IncreaseRadius", "SlowingShots" };
-        public static List<string> legendaryPossibleBuffs = new List<string>() { "TripleShots", "HealthRegeneration", "CurveShots", "FreezingShots" };
+        public static List<string> legendaryPossibleBuffs = new List<string>() { "TripleShots", "IncreaseHealthRegeneration", "CurveShots", "FreezingShots" };
 
 
         private static Dictionary<Rarity, List<string>> buffTable = new Dictionary<Rarity, List<string>>()
@@ -43,6 +43,7 @@ public class BuffItem : MonoBehaviour
     [SerializeField]
     private EmissionController emissionController;
     private Renderer myRenderer;
+    public string currentBuff;
 
     void Start()
     {
@@ -52,6 +53,7 @@ public class BuffItem : MonoBehaviour
         emissiveColor = rarityColors[(int)rarity];
         emissionController.SetColorAndIntensity(emissiveColor, 3);
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        currentBuff = possibleBuffs[Random.Range(0,possibleBuffs.Count)];
 
         List<string> buffs = RarityBuffs.GetPossibleBuffs(rarity);
 
@@ -64,49 +66,40 @@ public class BuffItem : MonoBehaviour
         {
             return;
         }
-        collision.gameObject.GetComponent<PlayerController>().Blink(emissiveColor);
-        collision.gameObject.GetComponent<BuffApplier>().Invoke(possibleBuffs[Random.Range(0,possibleBuffs.Count)],0);
+        playerController.Blink(emissiveColor);
+        playerController.ChangeBuffText(currentBuff);
+        collision.gameObject.GetComponent<BuffApplier>().Invoke(currentBuff,0);
 
-
-        float randomNumber = RollRandomNumber();
-
-        // 30% chance of activating player bubble shield
-        if (randomNumber < 30)
-        {
-            playerController.ActivateBubbleShield();
-            Destroy(gameObject);
-            return;
-        }
-
-        // 30% chance of increasing attack speed
-        else if (randomNumber >= 30 && randomNumber < 60)
-        {
-            playerController.IncreaseAttackSpeed(attackSpeedIncrease);
-            Destroy(gameObject);
-            return;
-        }
-
-        // 30% chance of increasing player speed
-        else if (randomNumber >= 60 && randomNumber < 75)
-        {
-            playerController.IncreaseMovementSpeed(movement_speed);
-            Destroy(gameObject);
-            return;
-        }
-        // 10% chance of increasing player max health
-        else if (randomNumber >= 75)
-        {
-            // Regen player hp by 1
-            playerController.IncreaseMaxHealth(1);
-            playerController.IncreaseHealth(1);
-            Destroy(gameObject);
-            return;
-        }
+        Destroy(gameObject);
 
     }
-    private float RollRandomNumber()
+    public Rarity GetRandomRarity(float[] rarities)
     {
-        return Random.Range(0, 100);
+        // Get the total sum of rarities percentages
+        float totalPercentage = 0;
+        foreach (float rarityPercentage in rarities)
+        {
+            totalPercentage += rarityPercentage;
+        }
+
+        // Generate a random number between 0 and the total percentage
+        float randomPercentage = Random.Range(0f, totalPercentage);
+
+        // Check the random number against each rarity percentage
+        float cumulativePercentage = 0;
+        for (int i = 0; i < rarities.Length; i++)
+        {
+            cumulativePercentage += rarities[i];
+            if (randomPercentage <= cumulativePercentage)
+            {
+                // Return the corresponding rarity
+                return (Rarity)i;
+            }
+        }
+
+        // This line is reached if the random percentage is greater than the total percentage
+        // Return the highest rarity as a fallback
+        return Rarity.Legendary;
     }
 
 }

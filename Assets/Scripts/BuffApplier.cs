@@ -4,78 +4,100 @@ using UnityEngine;
 
 public class BuffApplier : MonoBehaviour
 {
-    public static List<string> commonPossibleBuffs = new List<string>() {
-            "IncreaseMoveSpeed", "IncreaseBulletSpeed", "IncreaseDamage", "IncreaseAttackSpeed" };
-    public static List<string> rarePossibleBuffs = new List<string>() {
-             "BubbleShield", "IncreaseCriticalChance", "IncreaseCriticalDamage", "IncreaseRadius", "SlowingShots" };
-    public static List<string> legendaryPossibleBuffs = new List<string>() {
-            "TripleShots", "HealthRegeneration", "CurveShots", "FreezingShots" };
-    public AttributeManager attributeManager;
+
     public PlayerController player;
+    public GunSystem gunSystem;
+    public float moveSpeedMultiplier = 1.1f;
+    public float bulletSpeedMultiplier = 1.1f;
+    public float damageMultiplier = 1.1f;
+    public float attackSpeedMultiplier = 1.1f;
+    public float criticalChanceIncrease = 1.1f;
+    public float criticalDamageMultiplier = 1.1f;
+    public float radiusMultiplier = 1.1f;
+    public float healRegenerationAmount = 0.1f;
+
+
     void Start(){
-        attributeManager = GetComponent<AttributeManager>();
+        player = GetComponent<PlayerController>();
+        gunSystem = GetComponent<GunSystem>();
     }
-    public void IncreaseMoveSpeed(float moveSpeedMultiplier = 1.15f){
-        attributeManager.movementSpeed *= moveSpeedMultiplier;
+    public void IncreaseMoveSpeed(){
+        player.movementSpeed *= moveSpeedMultiplier;
+        player.ChangeBuffText("MOVE SPEED INCREASED!");
+
     }
-    public void IncreaseBulletSpeed(float bulletSpeedMultiplier = 1.2f)
+    public void IncreaseBulletSpeed()
     {
-        attributeManager.bulletSpeed *= bulletSpeedMultiplier;
+        gunSystem.bulletSpeed *= bulletSpeedMultiplier;
+        player.ChangeBuffText("Bullet speed INCREASED!");
     }
 
-    public void IncreaseDamage(float damageMultiplier = 1.25f)
+    public void IncreaseDamage()
     {
-        attributeManager.damage *= damageMultiplier;
+        gunSystem.damage *= damageMultiplier;
+        player.ChangeBuffText("Damage INCREASED!");
     }
 
-    public void IncreaseAttackSpeed(float attackSpeedMultiplier = 1.3f)
+    public void IncreaseAttackSpeed()
     {
-        attributeManager.attackSpeed *= attackSpeedMultiplier;
+        gunSystem.attackSpeed *= attackSpeedMultiplier;
+        player.ChangeBuffText("Attack speed INCREASED!");
     }
 
     public void BubbleShield()
     {
         player.ActivateBubbleShield();
+        player.ChangeBuffText("Bubble shield activated!");
+
     }
 
-    public void IncreaseCriticalChance(float criticalChanceIncrease = 0.1f)
+    public void IncreaseCriticalChance()
     {
-        attributeManager.criticalChance += criticalChanceIncrease;
+        gunSystem.criticalChance += criticalChanceIncrease;
+        player.ChangeBuffText("Critical Chance INCREASED!");
     }
 
-    public void IncreaseCritical(float criticalDamageMultiplier = 1.5f)
+    public void IncreaseCritical()
     {
-        attributeManager.criticalDamage *= criticalDamageMultiplier;
+        gunSystem.criticalDamage *= criticalDamageMultiplier;
+        player.ChangeBuffText("Critical Damage INCREASED!");
     }
 
-    public void IncreaseRadius(float radiusMultiplier = 1.2f)
+    public void IncreaseRadius()
     {
-        attributeManager.explosionRadius *= radiusMultiplier;
+        gunSystem.explosionRadius *= radiusMultiplier;
+        player.ChangeBuffText("Explosive Bullets!");
     }
 
-    public void SlowingShots(float slowAmount = 0.5f)
+    public void SlowingShots()
     {
-        player.hasSlowingShots = true;
+        gunSystem.hasSlowingShots = true;
+        player.ChangeBuffText("Slowing Bullets!");
     }
 
     public void TripleShots()
     {
-        player.hasTripleShots = true;
+        gunSystem.hasTripleShots = true;
+        player.ChangeBuffText("Triple buffs!");
     }
 
-    public void HealthRegeneration(float healAmount = 0.1f)
+    public void IncreaseHealthRegeneration()
     {
-        attributeManager.healthRegeneration += healAmount;
+        player.IncreaseMaxHealth(healRegenerationAmount);
+        player.IncreaseHealth(healRegenerationAmount);
+        player.ChangeBuffText("Health Regeneration Increased!");
     }
 
-    public void CurveShots(float curveAmount = 0.15f)
+    public void CurveShots()
     {
-        player.hasCurveShots = true;
+        gunSystem.hasCurveShots = true;
+        player.ChangeBuffText("Curvy bullets!");
     }
 
-    public void FreezingShots(float freezeDuration = 1.5f)
+    public void FreezingShots()
     {
-        player.hasFreezingShots = true;
+        gunSystem.hasFreezingShots = true;
+        player.ChangeBuffText("Freezing bullets!");
     }
 
     

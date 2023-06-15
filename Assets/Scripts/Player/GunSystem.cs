@@ -5,7 +5,11 @@ public class GunSystem : MonoBehaviour
 {
     //Gun stats
     public float damage;
-    public float fireRate, spread, range, timeBetweenShots;
+    public float spread, range, timeBetweenShots;
+    public float  bulletSpeed, attackSpeed, criticalChance, criticalDamage, explosionRadius,
+     bulletSlowMultiplier, bulletSlowDuration; 
+    public bool hasSlowingShots, hasFreezingShots, hasExplosiveShots, hasTripleShots, hasCurveShots;
+
     public int bulletsPerTap;
     public bool allowButtonHold;
     int bulletsShot;
@@ -65,7 +69,7 @@ public class GunSystem : MonoBehaviour
 
         bulletsShot--;
 
-        Invoke("ResetShot", 1/fireRate);
+        Invoke("ResetShot", 1/attackSpeed);
 
         if(bulletsShot > 0)
         Invoke("Shoot", timeBetweenShots);
@@ -83,9 +87,4 @@ public class GunSystem : MonoBehaviour
             Shoot();
             return true;
     }
-
-    public void IncreaseAttackSpeed(float attackSpeed){
-        fireRate *= attackSpeed;
-    }
-
 }

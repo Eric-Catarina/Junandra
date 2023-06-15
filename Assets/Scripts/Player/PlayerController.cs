@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     public float tiltAngle = 45f;
     public float horizontalInput;
     public float verticalInput;
-    public bool hasSlowingShots, hasFreezingShots, hasExplosiveShots, hasTripleShots, hasCurveShots;
     public float healthRegeneration = 0;
     public Quaternion originalRotation;
 
@@ -96,7 +95,6 @@ public class PlayerController : MonoBehaviour
 
     public float IncreaseHealth(float health)
     {
-        ChangeBuffText("Health Increased!");
         currentHealth += health;
         ChangeHealthTextColor();
         healthText.text = "Health: " + currentHealth.ToString();
@@ -115,22 +113,16 @@ public class PlayerController : MonoBehaviour
         healthText.text = "Health: " + currentHealth.ToString();
         return maxHealth;
     }
-    public void IncreaseAttackSpeed(float attackSpeed)
-    {
-        gunSystem.IncreaseAttackSpeed(attackSpeed);
-        ChangeBuffText("Attack Speed Increased!");
-    }
+
 
     public void IncreaseMovementSpeed(float movementSpeed)
     {
         this.movementSpeed *= movementSpeed;
-        ChangeBuffText("Movement Speed Increased!");
     }
 
     // Instantiate shield bubble inside player
     public void ActivateBubbleShield()
     {
-        ChangeBuffText("Bubble Shield Activated!");
         bubbleShieldHealth = bubbleShieldMaxHealth;
         if (haveShieldBubble)
         {
