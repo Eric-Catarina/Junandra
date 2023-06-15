@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 1396682609070937841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 361.88242, y: 302.1846, z: 0.6080322}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -138,6 +138,7 @@ MonoBehaviour:
   emissiveColor: {r: 0, g: 0, b: 0, a: 0}
   rarity: 2
   emissionController: {fileID: 1700585562424049346}
+  currentBuff: 
 --- !u!114 &1700585562424049346
 MonoBehaviour:
   m_ObjectHideFlags: 0

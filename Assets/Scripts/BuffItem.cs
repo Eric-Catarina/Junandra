@@ -47,6 +47,20 @@ public class BuffItem : MonoBehaviour
 
     void Start()
     {
+          switch (rarity)
+        {
+            case Rarity.Common:
+                transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                break;
+            case Rarity.Rare:
+                transform.localScale = new Vector3(1f, 1f, 1f);
+                break;
+            case Rarity.Legendary:
+                transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                break;
+            default:
+                break;
+        }
         possibleBuffs = RarityBuffs.GetPossibleBuffs(rarity);
 
         emissionController = GetComponent<EmissionController>();
