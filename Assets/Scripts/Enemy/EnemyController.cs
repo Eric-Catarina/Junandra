@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
     public float power;
 
     private Rigidbody rb;
+    private float[] rarities;
 
     void Start()
     {
@@ -112,6 +113,7 @@ public class EnemyController : MonoBehaviour
         lookAtPlayer = enemyDefinition.lookAtPlayer;
         power = enemyDefinition.power;
         shoots = enemyDefinition.shoots;
+        rarities = enemyDefinition.rarities;
     }
 
     private void Die(){
@@ -127,14 +129,11 @@ public class EnemyController : MonoBehaviour
     }
 
     private void SpawnItem(){
-        Instantiate(item, transform.position, transform.rotation);
+        GameObject itemInstance = Instantiate(item, transform.position, transform.rotation);
+        itemInstance.GetComponent<BuffItem>().rarity = GetRandomRarity(rarities);
     }
 
     public float TakeDamage(float damage){
-
-        StopCoroutine(BlinkCoroutine());
-        Blink();
-
 
         currentHealth -= damage;
         scoreManagerScript.AddScore(RandomNumber( Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));
@@ -146,11 +145,14 @@ public class EnemyController : MonoBehaviour
     }
 
     public void Blink(){
+        StopCoroutine(BlinkCoroutine());
+        emissionController.SetIntensity(1.2f);
         StartCoroutine(BlinkCoroutine());
+
     }
 
     private IEnumerator BlinkCoroutine(){
-        emissionController.SetIntensity(10);
+        emissionController.SetIntensity(0.0001f);
 
         for (int i = 10; i > 0; i--){
             float emissao = i/1.7f;
@@ -159,8 +161,8 @@ public class EnemyController : MonoBehaviour
             }
             emissionController.SetIntensity(emissao);
             yield return new WaitForSeconds(0.001f);
-            
         }
+
     }
 
     // Smoothly rotates toward player position using rigidbody rotation in x and y axis
@@ -195,6 +197,34 @@ public class EnemyController : MonoBehaviour
         return Random.Range(min, max);
     }
 
+        public BuffItem.Rarity GetRandomRarity(float[] rarities)
+    {
+        // Get the total sum of rarities percentages
+        float totalPercentage = 0;
+        foreach (float rarityPercentage in rarities)
+        {
+            totalPercentage += rarityPercentage;
+        }
+
+        // Generate a random number between 0 and the total percentage
+        float randomPercentage = Random.Range(0f, totalPercentage);
+
+        // Check the random number against each rarity percentage
+        float cumulativePercentage = 0;
+        for (int i = 0; i < rarities.Length; i++)
+        {
+            cumulativePercentage += rarities[i];
+            if (randomPercentage <= cumulativePercentage)
+            {
+                // Return the corresponding rarity
+                return (BuffItem.Rarity)i;
+            }
+        }
+
+        // This line is reached if the random percentage is greater than the total percentage
+        // Return the highest rarity as a fallback
+        return BuffItem.Rarity.Legendary;
+    }
 
 
 }

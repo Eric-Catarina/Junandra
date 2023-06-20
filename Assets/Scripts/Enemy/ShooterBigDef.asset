@@ -23,3 +23,8 @@ MonoBehaviour:
   sinFrequency: 5
   sinAmplitude: 6
   damage: 0.5
+  possibleItemDrops: []
+  rarities:
+  - 0
+  - 0
+  - 100

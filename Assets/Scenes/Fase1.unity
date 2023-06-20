@@ -707,7 +707,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &664925010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +985,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 4bd88e895f162a8479e274451ab74ae3, type: 2}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 4305323976563108592, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
 --- !u!1001 &858591064
 PrefabInstance:
@@ -2053,7 +2054,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.502014
+      value: -17.502197
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2450,7 +2451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 883037971676786536, guid: 2af58388b30a6cc4c8bbd365f9951c99, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.48645
+      value: -4.486328
       objectReference: {fileID: 0}
     - target: {fileID: 883037971676786536, guid: 2af58388b30a6cc4c8bbd365f9951c99, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2669,7 +2670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194411, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194413, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: m_RootOrder
@@ -2851,11 +2852,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5007789343978733189, guid: 6bfbbaa056df4204ea11c02595e25eb6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4.48645
+      value: -4.486328
       objectReference: {fileID: 0}
     - target: {fileID: 5007789343978733189, guid: 6bfbbaa056df4204ea11c02595e25eb6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.999939
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 5007789343978733189, guid: 6bfbbaa056df4204ea11c02595e25eb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

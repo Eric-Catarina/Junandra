@@ -24,3 +24,7 @@ MonoBehaviour:
   sinAmplitude: 6
   damage: 1
   possibleItemDrops: []
+  rarities:
+  - 40
+  - 40
+  - 20
