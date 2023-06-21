@@ -8,7 +8,7 @@ public class EnemyController : MonoBehaviour
 
     // References
     private GameObject scoreManager;
-    private ScoreManager scoreManagerScript; 
+    private ScoreManager scoreManagerScript;
 
     [SerializeField]
     private GameObject item;
@@ -31,10 +31,11 @@ public class EnemyController : MonoBehaviour
     public float damage;
     private bool movesInSin;
     private bool lookAtPlayer;
+    private bool movesTowardPlayer;
     private bool shoots;
     private float sinCenterX;
-    private float amplitude ;
-    private float frequency ;
+    private float amplitude;
+    private float frequency;
 
     public float power;
 
@@ -54,7 +55,8 @@ public class EnemyController : MonoBehaviour
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
 
-        if(shoots){
+        if (shoots)
+        {
             StartCoroutine(ShootCoroutine());
         }
 
@@ -62,9 +64,11 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (lookAtPlayer){
+        if (lookAtPlayer)
+        {
             LookAtPlayer();
         }
+
         if (movesInSin)
         {
 
@@ -73,28 +77,37 @@ public class EnemyController : MonoBehaviour
             Vector3 direction = new Vector3(x, -y, 0f);
             // convert the above rb.velocity to rb.MovePosition
             rb.MovePosition(transform.position + direction.normalized * movementSpeed * Time.fixedDeltaTime);
-           
+
         }
         else
         {
             rb.velocity = Vector3.down * movementSpeed;
+            if (movesTowardPlayer)
+            {
+                RavagerLookAtPlayer();
+                MoveTowardsPlayer();
+            }
         }
 
 
 
-        
-    }
-    void OnTriggerEnter(Collider collider){
 
-        if (collider.gameObject.TryGetComponent(out BulletController bulletController)){
+    }
+    void OnTriggerEnter(Collider collider)
+    {
+
+        if (collider.gameObject.TryGetComponent(out BulletController bulletController))
+        {
             TakeDamage(bulletController.damage);
             Destroy(collider.gameObject);
         }
-        else if (collider.gameObject.tag == "Player"){
+        else if (collider.gameObject.tag == "Player")
+        {
             PlayerController playerController = collider.gameObject.GetComponent<PlayerController>();
             playerController.TakeDamage(1);
         }
-        else if (collider.gameObject.tag == "Walls"){
+        else if (collider.gameObject.tag == "Walls")
+        {
             Destroy(gameObject);
         }
 
@@ -111,52 +124,64 @@ public class EnemyController : MonoBehaviour
         currentHealth = enemyDefinition.currentHealth;
         damage = enemyDefinition.damage;
         lookAtPlayer = enemyDefinition.lookAtPlayer;
+        movesTowardPlayer = enemyDefinition.movesTowardPlayer;
         power = enemyDefinition.power;
         shoots = enemyDefinition.shoots;
         rarities = enemyDefinition.rarities;
+
     }
 
-    private void Die(){
-        if (!estaMorto){
-            if (Random.Range(0f,100f) < power){
+    private void Die()
+    {
+        if (!estaMorto)
+        {
+            if (Random.Range(0f, 100f) < power)
+            {
                 SpawnItem();
             }
-            scoreManagerScript.AddScore(RandomNumber(100,500));
+            scoreManagerScript.AddScore(RandomNumber(100, 500));
             gameManager.SpawnExplosionEffect(transform.position);
             Destroy(gameObject);
         }
         estaMorto = true;
     }
 
-    private void SpawnItem(){
+    private void SpawnItem()
+    {
         GameObject itemInstance = Instantiate(item, transform.position, transform.rotation);
         itemInstance.GetComponent<BuffItem>().rarity = GetRandomRarity(rarities);
     }
 
-    public float TakeDamage(float damage){
+    public float TakeDamage(float damage)
+    {
 
         currentHealth -= damage;
-        scoreManagerScript.AddScore(RandomNumber( Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));
+        scoreManagerScript.AddScore(RandomNumber(Mathf.RoundToInt(damage * 0.8f), Mathf.RoundToInt(damage * 1.2f)));
 
-        if (currentHealth <= 0){
+        if (currentHealth <= 0)
+        {
             Die();
         }
         return currentHealth;
     }
 
-    public void Blink(){
+    public void Blink()
+    {
         StopCoroutine(BlinkCoroutine());
         emissionController.SetIntensity(1.2f);
         StartCoroutine(BlinkCoroutine());
 
     }
 
-    private IEnumerator BlinkCoroutine(){
+    private IEnumerator BlinkCoroutine()
+    {
         emissionController.SetIntensity(0.0001f);
 
-        for (int i = 10; i > 0; i--){
-            float emissao = i/1.7f;
-            if (emissao < 1.2f){
+        for (int i = 10; i > 0; i--)
+        {
+            float emissao = i / 1.7f;
+            if (emissao < 1.2f)
+            {
                 emissao = 1.2f;
             }
             emissionController.SetIntensity(emissao);
@@ -166,38 +191,56 @@ public class EnemyController : MonoBehaviour
     }
 
     // Smoothly rotates toward player position using rigidbody rotation in x and y axis
-    private void LookAtPlayer(){
+    private void LookAtPlayer()
+    {
         Vector3 playerPosition = player.transform.position;
         Vector3 direction = (playerPosition - transform.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 2 * Time.deltaTime);
     }
-
+    private void RavagerLookAtPlayer()
+    {
+        Vector3 playerPosition = player.transform.position;
+        Vector3 direction = (playerPosition - transform.position).normalized;
+        direction.y = 0; // Set the Y-component to zero to ignore the rotation in the Y-axis
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 2 * Time.deltaTime);
+    }
+    private void MoveTowardsPlayer()
+    {
+        Vector3 direction = player.transform.forward;
+        rb.velocity = direction * movementSpeed;
+    }
     // Shoots at player
-    public void Shoot(){
+    public void Shoot()
+    {
         Vector3 playerPosition = player.transform.position;
         Vector3 direction = (playerPosition - transform.position).normalized;
         GameObject bulletInstance = Instantiate(bullet, transform.position, transform.rotation);
-        BulletController bulletController =  bulletInstance.GetComponent<BulletController>();
+        BulletController bulletController = bulletInstance.GetComponent<BulletController>();
         bulletController.isEnemyBullet = true;
         bulletController.damage = damage;
     }
 
     // Shoot every 1.5 seconds
-    public IEnumerator ShootCoroutine(){
-        while (true){
+    public IEnumerator ShootCoroutine()
+    {
+        while (true)
+        {
             Shoot();
             yield return new WaitForSeconds(1.5f);
         }
     }
 
     // Generate random number between function parameters
-    public float RandomNumber(int min, int max){
+    public float RandomNumber(int min, int max)
+    {
         return Random.Range(min, max);
     }
 
-        public BuffItem.Rarity GetRandomRarity(float[] rarities)
+    public BuffItem.Rarity GetRandomRarity(float[] rarities)
     {
         // Get the total sum of rarities percentages
         float totalPercentage = 0;
