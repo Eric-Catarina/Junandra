@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public EnemyDefinition enemyDefinition;
     public EmissionController emissionController;
     private GameObject player;
+    private Vector3 initialDirection, playerInitialPosition;
 
     public GameObject bullet;
 
@@ -49,6 +50,10 @@ public class EnemyController : MonoBehaviour
         sinCenterX = transform.position.x;
 
         player = GameObject.Find("Player");
+        playerInitialPosition = player.transform.position;
+        initialDirection = (playerInitialPosition - transform.position).normalized;
+        
+        SetInitialZRotation(initialDirection);
 
         InitializeEnemyDefinition(enemyDefinition);
 
@@ -84,7 +89,6 @@ public class EnemyController : MonoBehaviour
             rb.velocity = Vector3.down * movementSpeed;
             if (movesTowardPlayer)
             {
-                RavagerLookAtPlayer();
                 MoveTowardsPlayer();
             }
         }
@@ -199,20 +203,21 @@ public class EnemyController : MonoBehaviour
         Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 2 * Time.deltaTime);
     }
-    private void RavagerLookAtPlayer()
-    {
-        Vector3 playerPosition = player.transform.position;
-        Vector3 direction = (playerPosition - transform.position).normalized;
-        direction.y = 0; // Set the Y-component to zero to ignore the rotation in the Y-axis
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 2 * Time.deltaTime);
-    }
     private void MoveTowardsPlayer()
     {
-        Vector3 direction = player.transform.forward;
-        rb.velocity = direction * movementSpeed;
+        rb.velocity = initialDirection * movementSpeed;
     }
+
+public void SetInitialZRotation(Vector3 direction)
+{
+    // Calculate the angle between Vector3.up and the target direction around the Z-axis
+    float angle = Vector3.SignedAngle(Vector3.up, direction, Vector3.forward);
+
+    // Set the transform's rotation, preserving the current X and Y rotations
+    transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, angle + 180);
+}
+
+
     // Shoots at player
     public void Shoot()
     {

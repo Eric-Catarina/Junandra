@@ -16,7 +16,7 @@ MonoBehaviour:
   maxHealth: 50
   movementSpeed: 7.5
   movesInSin: 0
-  lookAtPlayer: 1
+  lookAtPlayer: 0
   movesTowardPlayer: 1
   shoots: 0
   power: 50
