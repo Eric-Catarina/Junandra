@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameObject gameManager;
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void BackToMenu()
     {
-        
+        Time.timeScale = 1;
+        gameManager.GetComponent<SceneManager>().LoadScene0();
     }
 }

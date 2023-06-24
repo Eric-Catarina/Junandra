@@ -16,10 +16,7 @@ public class SceneManager : MonoBehaviour
         soundManager.PlayMusic(1);
         UnityEngine.SceneManagement.SceneManager.LoadScene("Fase1");
     }
-    public static  void StaticLoadScene1()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Fase1");
-    }
+
     
     public  void LoadScene2()
     {
@@ -34,10 +31,6 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MenuInicial");
     }
 
-    public void StaticLoadScene0()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MenuInicial");
-    }
 
     public  void LoadSceneGameOver()
     {

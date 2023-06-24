@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         originalRotation = transform.rotation;
         emissionController = GetComponent<EmissionController>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-
+        gameManager.StopAllCoroutines();
     }
 
     void FixedUpdate()
