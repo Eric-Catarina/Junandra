@@ -146,6 +146,14 @@ public class EnemyGenerator : MonoBehaviour
     SpawnMultipleEnemiesAfter(currentEnemyWave);
 
         currentEnemyWave = new EnemyWaveBuilder()
+        .WithPrefab(enemiesPrefabs[3])
+        .WithAmount(5)
+        .WithDelay(Random.Range(0.5f, 7f))
+        .WithSecondsToStart(secondsToStart)
+        .Build();
+    SpawnMultipleEnemiesAfter(currentEnemyWave);
+
+        currentEnemyWave = new EnemyWaveBuilder()
         .WithPrefab(enemiesPrefabs[1])
         .WithAmount(30)
         .WithDelay(1)
@@ -263,8 +271,17 @@ public class EnemyGenerator : MonoBehaviour
 
     }
 
-    // wait for 125 seconds
-    
+    // Randomly spawns a enemiesprefabs[3] in a random interval between 10 adn 20 seconds
+    public void SpawnRandomEnemy(GameObject enemiePrefab, int amount = 1){
+        float secondsToStart = Random.Range(0, 15);
+        currentEnemyWave = new EnemyWaveBuilder()
+                .WithPrefab(enemiePrefab)
+                .WithAmount(Random.Range(1, amount))
+                .WithDelay(Random.Range(amount, amount*5))
+                .WithSecondsToStart(secondsToStart + 30)
+                .Build();
+            SpawnMultipleEnemiesAfter(currentEnemyWave);
+    }    
     
     
 }

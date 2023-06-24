@@ -2947,12 +2947,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: enemiesPrefabs.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: enemiesPrefabs.Array.data[2]
       value: 
       objectReference: {fileID: 2343006732696286530, guid: e8510448a325d614597ac4ccf28d402d, type: 3}
+    - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
+      propertyPath: enemiesPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 2946275685678679377, guid: 77024474e46690146981d0e45f2a839a, type: 3}
     - target: {fileID: 7127996993908194410, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: temperatureCurve.m_Curve.Array.data[1].time
       value: 90
@@ -2967,7 +2971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194411, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194413, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: m_RootOrder

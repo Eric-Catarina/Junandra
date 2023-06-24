@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     public EnemyDefinition enemyDefinition;
     public EmissionController emissionController;
     private GameObject player;
-    private Vector3 initialDirection, playerInitialPosition;
+    public Vector3 initialDirection, playerInitialPosition;
 
     public GameObject bullet;
 
@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
     public float damage;
     private bool movesInSin;
     private bool lookAtPlayer;
-    private bool movesTowardPlayer;
+    public bool movesTowardPlayer;
     private bool shoots;
     private float sinCenterX;
     private float amplitude;
@@ -52,11 +52,11 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");
         playerInitialPosition = player.transform.position;
         initialDirection = (playerInitialPosition - transform.position).normalized;
-        
-        SetInitialZRotation(initialDirection);
-
         InitializeEnemyDefinition(enemyDefinition);
 
+        if(movesTowardPlayer){
+            SetInitialZRotation(initialDirection);
+        }
         scoreManagerScript = (ScoreManager)FindObjectOfType(typeof(ScoreManager));
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
 
@@ -208,14 +208,14 @@ public class EnemyController : MonoBehaviour
         rb.velocity = initialDirection * movementSpeed;
     }
 
-public void SetInitialZRotation(Vector3 direction)
-{
-    // Calculate the angle between Vector3.up and the target direction around the Z-axis
-    float angle = Vector3.SignedAngle(Vector3.up, direction, Vector3.forward);
+    public void SetInitialZRotation(Vector3 direction)
+    {
+        // Calculate the angle between Vector3.up and the target direction around the Z-axis
+        float angle = Vector3.SignedAngle(Vector3.up, direction, Vector3.forward);
 
-    // Set the transform's rotation, preserving the current X and Y rotations
-    transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, angle + 180);
-}
+        // Set the transform's rotation, preserving the current X and Y rotations
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, angle + 180);
+    }
 
 
     // Shoots at player

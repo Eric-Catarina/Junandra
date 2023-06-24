@@ -26,6 +26,10 @@ public class GameCheat : MonoBehaviour
         {
             LoadSceneGameOver();
         }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            InfiniteLife();
+        }
 
     }
 
@@ -48,6 +52,15 @@ public class GameCheat : MonoBehaviour
     {
         SceneManager.LoadSceneGameOver();
     }
+
+    // Infinite life
+
+    public static void InfiniteLife()
+    {
+        PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
+        player.currentHealth = 999999999;
+    }
+ 
 
     // Prints "amogus" when player presses t
  
