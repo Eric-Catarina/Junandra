@@ -844,11 +844,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.7765188
+      value: 0.75637007
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.81931853
+      value: 0.8902226
       objectReference: {fileID: 0}
     - target: {fileID: 3956174744331850866, guid: 87749b2f2dfcb664487a0e3e080a93da, type: 3}
       propertyPath: m_SizeDelta.x

@@ -53,16 +53,12 @@ public class GameCheat : MonoBehaviour
         SceneManager.LoadSceneGameOver();
     }
 
-    // Infinite life
-
     public static void InfiniteLife()
     {
+        Debug.Log("Infinite life");
         PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
-        player.currentHealth = 999999999;
+        player.IncreaseMaxHealth(9999);
+        player.IncreaseHealth(9999);
     }
- 
-
-    // Prints "amogus" when player presses t
- 
 
 }

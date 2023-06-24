@@ -79,7 +79,8 @@ public class EnemyGenerator : MonoBehaviour
         StopCoroutine(SpawnMultipleEnemiesAfterCoroutine(enemyWave));
     }
 
-    private List<GameObject> SpawnMultipleEnemies(EnemyWave enemyWave){
+    private List<GameObject> SpawnMultipleEnemies(EnemyWave enemyWave)
+    {
         StartCoroutine(InstantiateMultipleWithDelay(enemyWave));
         StopCoroutine(InstantiateMultipleWithDelay(enemyWave));
         return currentWaveEnemies;
@@ -104,7 +105,8 @@ public class EnemyGenerator : MonoBehaviour
         }
     }
 
-    private void SpawnFirstWave(){
+    private void SpawnFirstWave()
+    {
         currentEnemyWave = new EnemyWaveBuilder()
             .WithPrefab(enemiesPrefabs[1])
             .WithAmount(30)
@@ -114,36 +116,39 @@ public class EnemyGenerator : MonoBehaviour
         SpawnMultipleEnemiesAfter(currentEnemyWave);
     }
 
-    private void SpawnSecondWave(float secondsToStart = 21){
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[1])
-        .WithAmount(25)
-        .WithDelay(0.2f)
-        .WithSecondsToStart(secondsToStart)
-        .WithXPosition(0.01f)
-        .WithEnemyDropChance(0.7f)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    private void SpawnSecondWave(float secondsToStart = 21)
+    {
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[1])
+            .WithAmount(25)
+            .WithDelay(0.2f)
+            .WithSecondsToStart(secondsToStart)
+            .WithXPosition(0.01f)
+            .WithEnemyDropChance(0.7f)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
     }
 
-    private void SpawnThirdWave(float secondsToStart = 30){
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(6)
-        .WithDelay(5)
-        .WithSecondsToStart(secondsToStart)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    private void SpawnThirdWave(float secondsToStart = 30)
+    {
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[0])
+            .WithAmount(6)
+            .WithDelay(5)
+            .WithSecondsToStart(secondsToStart)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
     }
 
-    private void SpawnFourthWave(float secondsToStart = 60){
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(5)
-        .WithDelay(6)
-        .WithSecondsToStart(secondsToStart)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    private void SpawnFourthWave(float secondsToStart = 60)
+    {
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[0])
+            .WithAmount(5)
+            .WithDelay(6)
+            .WithSecondsToStart(secondsToStart)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
         currentEnemyWave = new EnemyWaveBuilder()
         .WithPrefab(enemiesPrefabs[3])
@@ -151,7 +156,7 @@ public class EnemyGenerator : MonoBehaviour
         .WithDelay(Random.Range(0.5f, 7f))
         .WithSecondsToStart(secondsToStart)
         .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
         currentEnemyWave = new EnemyWaveBuilder()
         .WithPrefab(enemiesPrefabs[1])
@@ -159,19 +164,20 @@ public class EnemyGenerator : MonoBehaviour
         .WithDelay(1)
         .WithSecondsToStart(secondsToStart + 1.5f)
         .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
     }
 
-    private void SpawnFifthWave(float secondsToStart = 90){
-    // 10 segundos
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[1])
-        .WithAmount(16)
-        .WithDelay(0.15f)
-        .WithSecondsToStart(secondsToStart)
-        .WithXPosition(-12)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    private void SpawnFifthWave(float secondsToStart = 90)
+    {
+        // 10 segundos
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[1])
+            .WithAmount(16)
+            .WithDelay(0.15f)
+            .WithSecondsToStart(secondsToStart)
+            .WithXPosition(-12)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
         currentEnemyWave = new EnemyWaveBuilder()
         .WithPrefab(enemiesPrefabs[1])
@@ -180,86 +186,88 @@ public class EnemyGenerator : MonoBehaviour
         .WithSecondsToStart(secondsToStart)
         .WithXPosition(0.01f)
         .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[1])
-        .WithAmount(16)
-        .WithDelay(0.15f)
-        .WithSecondsToStart(secondsToStart)
-        .WithXPosition(12)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[1])
+            .WithAmount(16)
+            .WithDelay(0.15f)
+            .WithSecondsToStart(secondsToStart)
+            .WithXPosition(12)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(1)
-        .WithDelay(0)
-        .WithSecondsToStart(secondsToStart + 1.5f)
-        .WithXPosition(-8)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[0])
+            .WithAmount(1)
+            .WithDelay(0)
+            .WithSecondsToStart(secondsToStart + 1.5f)
+            .WithXPosition(-8)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(1)
-        .WithDelay(0)
-        .WithSecondsToStart(secondsToStart + 1.5f)
-        .WithXPosition(8)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[0])
+            .WithAmount(1)
+            .WithDelay(0)
+            .WithSecondsToStart(secondsToStart + 1.5f)
+            .WithXPosition(8)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
     }
 
-    private void SpawnSixthWave(float secondsToStart = 96){
-    // 10 segundos
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[1])
-        .WithAmount(16)
-        .WithDelay(0.15f)
-        .WithSecondsToStart(secondsToStart)
-        .WithXPosition(-6)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+    private void SpawnSixthWave(float secondsToStart = 96)
+    {
+        // 10 segundos
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[1])
+            .WithAmount(16)
+            .WithDelay(0.15f)
+            .WithSecondsToStart(secondsToStart)
+            .WithXPosition(-6)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[1])
-        .WithAmount(16)
-        .WithDelay(0.15f)
-        .WithSecondsToStart(secondsToStart)
-        .WithXPosition(6)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[1])
+            .WithAmount(16)
+            .WithDelay(0.15f)
+            .WithSecondsToStart(secondsToStart)
+            .WithXPosition(6)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(1)
-        .WithDelay(0)
-        .WithSecondsToStart(secondsToStart + 1.5f)
-        .WithXPosition(-12)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[0])
+            .WithAmount(1)
+            .WithDelay(0)
+            .WithSecondsToStart(secondsToStart + 1.5f)
+            .WithXPosition(-12)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
-    currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(1)
-        .WithDelay(0)
-        .WithSecondsToStart(secondsToStart + 1.5f)
-        .WithXPosition(0.01f)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
-   
-   currentEnemyWave = new EnemyWaveBuilder()
-        .WithPrefab(enemiesPrefabs[0])
-        .WithAmount(1)
-        .WithDelay(0)
-        .WithSecondsToStart(secondsToStart + 1.5f)
-        .WithXPosition(12)
-        .Build();
-    SpawnMultipleEnemiesAfter(currentEnemyWave);
-   
+        currentEnemyWave = new EnemyWaveBuilder()
+            .WithPrefab(enemiesPrefabs[0])
+            .WithAmount(1)
+            .WithDelay(0)
+            .WithSecondsToStart(secondsToStart + 1.5f)
+            .WithXPosition(0.01f)
+            .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
+
+        currentEnemyWave = new EnemyWaveBuilder()
+             .WithPrefab(enemiesPrefabs[0])
+             .WithAmount(1)
+             .WithDelay(0)
+             .WithSecondsToStart(secondsToStart + 1.5f)
+             .WithXPosition(12)
+             .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
+
     }
 
-    public void SpawnBoss(float secondsToStart = 110){
+    public void SpawnBoss(float secondsToStart = 110)
+    {
         currentEnemyWave = new EnemyWaveBuilder()
                 .WithPrefab(enemiesPrefabs[2])
                 .WithAmount(1)
@@ -267,21 +275,22 @@ public class EnemyGenerator : MonoBehaviour
                 .WithSecondsToStart(secondsToStart)
                 .WithXPosition(0.001f)
                 .Build();
-            SpawnMultipleEnemiesAfter(currentEnemyWave);
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
 
     }
 
     // Randomly spawns a enemiesprefabs[3] in a random interval between 10 adn 20 seconds
-    public void SpawnRandomEnemy(GameObject enemiePrefab, int amount = 1){
+    public void SpawnRandomEnemy(GameObject enemiePrefab, int amount = 1)
+    {
         float secondsToStart = Random.Range(0, 15);
         currentEnemyWave = new EnemyWaveBuilder()
                 .WithPrefab(enemiePrefab)
                 .WithAmount(Random.Range(1, amount))
-                .WithDelay(Random.Range(amount, amount*5))
+                .WithDelay(Random.Range(amount, amount * 5))
                 .WithSecondsToStart(secondsToStart + 30)
                 .Build();
-            SpawnMultipleEnemiesAfter(currentEnemyWave);
-    }    
-    
-    
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
+    }
+
+
 }
