@@ -7,9 +7,9 @@ using UnityEngine.Audio;
 public class SoundManager : MonoBehaviour
 {
     [SerializeField]
-    private AudioClip[] audioClips;
+    private  AudioClip[] audioClips;
     [SerializeField]
-    private AudioSource sfxAudioSource, musicAudioSource;
+    private  AudioSource sfxAudioSource, musicAudioSource;
     public AudioMixer audioMixer;
 
     private UIManager uiManager;
@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
 
     void Start()
     {
+
         uiManager = GetComponent<UIManager>();
         InitializePlayerSoundPrefs();
         musicAudioSource.clip = audioClips[0];
@@ -82,8 +83,15 @@ public class SoundManager : MonoBehaviour
         return sfxVolume;
     }
 
-    void Update()
+    public void PlaySFX(int index)
     {
-        
+        sfxAudioSource.PlayOneShot(audioClips[index]);
     }
+
+    public void PlayMusic(int index)
+    {
+        musicAudioSource.clip = audioClips[index];
+        musicAudioSource.Play();
+    }
+
 }

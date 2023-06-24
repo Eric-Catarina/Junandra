@@ -6,10 +6,12 @@ public class PauseMenu : MonoBehaviour
 {
     public  bool isPaused = false;
     public GameOver gameOver;
+    public GameObject gameManager;
 
     private void Start()
     {
         gameOver = FindObjectOfType<GameOver>(true);
+        gameManager = GameObject.Find("GameManager");
     }
 
 
@@ -42,6 +44,11 @@ public class PauseMenu : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public void BackToMenu()
+    {
+        gameManager.GetComponent<SceneManager>().LoadScene0();
     }
 
     

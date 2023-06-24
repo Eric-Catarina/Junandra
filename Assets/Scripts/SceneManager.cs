@@ -4,28 +4,47 @@ using UnityEngine;
 
 public class SceneManager : MonoBehaviour
 {
-    public static void LoadScene1()
+    [SerializeField]
+    private  SoundManager soundManager;
+
+    void Start()
+    {
+        soundManager = GetComponent<SoundManager>();
+    }
+    public  void LoadScene1()
+    {
+        soundManager.PlayMusic(1);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Fase1");
+    }
+    public static  void StaticLoadScene1()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Fase1");
     }
     
-    public static void LoadScene2()
+    public  void LoadScene2()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("Fase2");
     }
 
-    public static void LoadScene0()
+    public  void LoadScene0()
     {
+        soundManager.PlayMusic(0);
+
         Time.timeScale = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("MenuInicial");
     }
 
-    public static void LoadSceneGameOver()
+    public void StaticLoadScene0()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MenuInicial");
+    }
+
+    public  void LoadSceneGameOver()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 
-    public static void QuitGame()
+    public  void QuitGame()
     {
         Application.Quit();
     }

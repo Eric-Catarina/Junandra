@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 933490210}
-  m_IndirectSpecularColor: {r: 0.17787792, g: 0.22270906, b: 0.30484805, a: 1}
+  m_IndirectSpecularColor: {r: 0.17787838, g: 0.22270948, b: 0.30484903, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -371,6 +371,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: ace260a1bd0aa2243abb7e2b7432cd57, type: 3}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 36a74cab27dc5e54a88e1b5695dee65e, type: 3}
     - target: {fileID: -1113536410261069194, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: sfxSlider
       value: 
@@ -391,6 +403,10 @@ PrefabInstance:
       propertyPath: generalSlider
       value: 
       objectReference: {fileID: 1274599289}
+    - target: {fileID: -228491349411015101, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1741451581621759097, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -917,6 +933,7 @@ GameObject:
   - component: {fileID: 1201248470}
   - component: {fileID: 1201248469}
   - component: {fileID: 1201248468}
+  - component: {fileID: 1201248471}
   m_Layer: 5
   m_Name: Jogar
   m_TagString: Untagged
@@ -989,9 +1006,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1239552733}
-        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
-        m_MethodName: LoadScene1
+      - m_Target: {fileID: 1201248471}
+        m_TargetAssemblyTypeName: PlayButton, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1039,6 +1056,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201248466}
   m_CullTransparentMesh: 1
+--- !u!114 &1201248471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201248466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d218d976b2044034ab6f6f664097bac6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1239552733 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1741451581621759096, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}

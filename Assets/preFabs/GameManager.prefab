@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e97dba9795c604a81a7c27aeec1873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundManager: {fileID: 0}
 --- !u!114 &-1701387931343761420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
+  - {fileID: 8300000, guid: ace260a1bd0aa2243abb7e2b7432cd57, type: 3}
   - {fileID: 8300000, guid: 36a74cab27dc5e54a88e1b5695dee65e, type: 3}
   sfxAudioSource: {fileID: 7650028469344859273}
   musicAudioSource: {fileID: -228491349411015101}
@@ -247,6 +249,7 @@ MonoBehaviour:
   sfxSlider: {fileID: 0}
   generalSlider: {fileID: 0}
   optionsPanel: {fileID: 0}
+  creditsPanel: {fileID: 0}
 --- !u!82 &7650028469344859273
 AudioSource:
   m_ObjectHideFlags: 0

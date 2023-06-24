@@ -7,6 +7,10 @@ public class GameCheat : MonoBehaviour
 {
 
     private SceneManager sceneManager;
+    void Start()
+    {
+        sceneManager = GetComponent<SceneManager>();
+    }
     void Update()
     {
         // Change scene when player press "1"
@@ -33,29 +37,28 @@ public class GameCheat : MonoBehaviour
 
     }
 
-    public static void LoadScene1()
+    public  void LoadScene1()
     {
-        SceneManager.LoadScene1();
+        sceneManager.LoadScene1();
     }
     
-    public static void LoadScene2()
+    public  void LoadScene2()
     {
-        SceneManager.LoadScene2();
+        sceneManager.LoadScene2();
     }
 
-    public static void LoadScene0()
+    public void LoadScene0()
     {
-        SceneManager.LoadScene0();
+        sceneManager.LoadScene0();
     }
 
-    public static void LoadSceneGameOver()
+    public void LoadSceneGameOver()
     {
-        SceneManager.LoadSceneGameOver();
+        sceneManager.LoadSceneGameOver();
     }
 
-    public static void InfiniteLife()
+    public void InfiniteLife()
     {
-        Debug.Log("Infinite life");
         PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
         player.IncreaseMaxHealth(9999);
         player.IncreaseHealth(9999);
