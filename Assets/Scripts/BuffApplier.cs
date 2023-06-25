@@ -20,6 +20,7 @@ public class BuffApplier : MonoBehaviour
     void Start(){
         player = GetComponent<PlayerController>();
         gunSystem = GetComponent<GunSystem>();
+        SoundManager soundManager = GameObject.Find("GameManager").GetComponent<SoundManager>();
     }
     public void IncreaseMoveSpeed(){
         player.movementSpeed *= moveSpeedMultiplier;

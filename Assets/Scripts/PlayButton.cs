@@ -9,15 +9,13 @@ public class PlayButton : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Play()
     {
         gameManager.GetComponent<SceneManager>().LoadScene1();
+    }
+
+    public void PlayButtonSound()
+    {
+        gameManager.GetComponent<SoundManager>().PlaySFX(2);
     }
 }

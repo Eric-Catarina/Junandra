@@ -80,6 +80,8 @@ public class BuffItem : MonoBehaviour
         {
             return;
         }
+        SoundManager soundManager = GameObject.Find("GameManager").GetComponent<SoundManager>();
+        soundManager.PlaySFX(4);
         playerController.Blink(emissiveColor);
         playerController.ChangeBuffText(currentBuff);
         collision.gameObject.GetComponent<BuffApplier>().Invoke(currentBuff,0);

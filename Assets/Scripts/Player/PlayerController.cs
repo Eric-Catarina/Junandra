@@ -222,6 +222,7 @@ public class PlayerController : MonoBehaviour
 
     public void DieAndPause()
     {
+        gameManager.GetComponent<SoundManager>().PlaySFX(3);
         DeactivatePlayer();
         gameOverPanel.SetActive(true);
         gameManager.SlowTime();

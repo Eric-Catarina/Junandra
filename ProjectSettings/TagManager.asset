@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - bala
   - inimigos
+  - Item
   layers:
   - Default
   - TransparentFX

@@ -17,6 +17,7 @@ public class GunSystem : MonoBehaviour
     //bools 
     public bool tryingToShoot, readyToShoot;
     public GameObject bulletFab;
+    public SoundManager soundManager;
     //Reference
     public Transform attackPoint;
 
@@ -34,6 +35,10 @@ public class GunSystem : MonoBehaviour
     private void Awake()
     {
         readyToShoot = true;
+    }
+    void Start()
+    {
+        soundManager = GameObject.Find("GameManager").GetComponent<SoundManager>();
     }
     
     void FixedUpdate(){
@@ -65,6 +70,8 @@ public class GunSystem : MonoBehaviour
         Vector3 direction = Vector3.up;
 
         GameObject bullet = Instantiate(bulletFab, bulletSpawnPoint, attackPoint.rotation);
+        
+        soundManager.PlaySFX(5);
         bool isCritical = Random.Range(0f, 1f) < criticalChance;
         if (isCritical)
         {
