@@ -10,13 +10,13 @@ public class BossBehaviour : MonoBehaviour
     public GameObject bullet;
     public GameObject player;
     public Transform bulletSpawnPoint;
+    public bool isOnBurst = false;
     public float health;
     void Start()
     {
         animator = GetComponent<Animator>();
         player = GameObject.Find("Player");
-        StartDisparoCO(0);
-        StartCoroutine(ShootCoroutine());
+        EntradaDramatica();
     }
 
     // Update is called once per frame
@@ -48,11 +48,12 @@ public class BossBehaviour : MonoBehaviour
     }
     public void DisparoBoss()
     {
-        //transform.DOMoveX(-9, 2f).SetEase(Ease.InOutSine).SetLoops(2, LoopType.Yoyo);
+        StartCoroutine(BurstCoroutine());   
     }
 
     public void TerminouDisparo()
     {
+        StopCoroutine(BurstCoroutine()); 
         transform.DOShakePosition(1f, 0.2f, 10, 90, false,true, ShakeRandomnessMode.Harmonic);
         StartDisparoCO(1);
     }
@@ -64,6 +65,7 @@ public class BossBehaviour : MonoBehaviour
     public IEnumerator StartDisparo(float timeToStart = 0)
     {
         yield return new WaitForSeconds(timeToStart);
+        StartCoroutine(ShootCoroutine());  
         animator.SetTrigger("Disparo");
 
         Sequence sequence = DOTween.Sequence();
@@ -85,15 +87,19 @@ public class BossBehaviour : MonoBehaviour
         while (true)
         {
             Shoot();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
     }
 
-        public void Shoot()
+        public void Shoot(bool isBurst = false)
     {
         Vector3 playerPosition = player.transform.position;
         Vector3 direction = (playerPosition - transform.position).normalized;
         GameObject bulletInstance = Instantiate(bullet, transform.position, transform.rotation);
+        if (isBurst)
+        {
+            bulletInstance.GetComponent<BulletController>().isBurstBullet = true;
+        }
         bulletInstance.transform.position = bulletSpawnPoint.position;
         BulletController bulletController = bulletInstance.GetComponent<BulletController>();
         bulletController.isBossBullet = true;
@@ -119,6 +125,21 @@ public class BossBehaviour : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    public IEnumerator BurstCoroutine()
+    {
+        while (true)
+        {
+            Shoot(true);
+            Shoot(true);
+            Shoot(true);
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
+    public void ParouDeAtirar()
+    {
+        StopAllCoroutines();
     }
     
 }

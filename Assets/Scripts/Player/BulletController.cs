@@ -11,6 +11,7 @@ public class BulletController : MonoBehaviour
     public bool isEnemyBullet;
     public bool isPlayerBullet;
     public bool isBossBullet;
+    public bool isBurstBullet;
 
     public float rotationSpeed;
     public GameObject player;
@@ -24,7 +25,12 @@ public class BulletController : MonoBehaviour
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));  
         impulseSource = GetComponent<CinemachineImpulseSource>();
         if (isBossBullet){
-            transform.Rotate(0, 0, Random.Range(-10f, 10f));
+            transform.Rotate(0, 0, Random.Range(-4f, 4f));
+        }
+        if (isBurstBullet){
+            // Local scale is lower
+            transform.localScale = transform.localScale /2;
+            speed = speed * 1.5f;
         }
     }
 
@@ -47,10 +53,11 @@ public class BulletController : MonoBehaviour
         }
 
         if (isBossBullet){
-            // Make bullet go down but with a little random angle error
             transform.position -= transform.up * speed * Time.deltaTime;
-            //transform.position += transform.right * Random.Range(-1f, 1f) * speed * Time.deltaTime;
-            // Change its z Rotation a little bit randomly
+            if(isBurstBullet){
+                speed = Mathf.Lerp(speed, 0, 0.01f);
+            }
+
         }
 
         lifeTimeCounter -= Time.deltaTime;
