@@ -25,6 +25,6 @@ MonoBehaviour:
   damage: 1
   possibleItemDrops: []
   rarities:
-  - 70
-  - 20
-  - 10
+  - 80
+  - 15
+  - 5

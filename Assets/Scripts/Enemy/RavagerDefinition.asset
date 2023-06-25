@@ -27,5 +27,5 @@ MonoBehaviour:
   - {fileID: 1396682609070937841, guid: 36afec19b59ce484b9426464f29d6b5c, type: 3}
   rarities:
   - 60
-  - 25
-  - 15
+  - 30
+  - 10
