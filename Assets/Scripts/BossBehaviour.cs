@@ -5,18 +5,26 @@ using UnityEngine;
 
 public class BossBehaviour : MonoBehaviour
 {
+    public GameObject gameManager;
     public Animator animator;
     public AnimationCurve freadaDoSpawnCurve;
     public GameObject bullet;
     public GameObject player;
     public Transform bulletSpawnPoint;
+    public GameObject collider;
     public bool isOnBurst = false;
     public float health;
     void Start()
     {
+        gameManager = GameObject.Find("GameManager");
         animator = GetComponent<Animator>();
         player = GameObject.Find("Player");
+        gameManager.GetComponent<SoundManager>().PlayMusic(7);
+        collider = GameObject.Find("BossCollider");
+        collider.SetActive(false);
         EntradaDramatica();
+        // StartDisparoCO(0);
+        // Die();
     }
 
     // Update is called once per frame
@@ -43,6 +51,7 @@ public class BossBehaviour : MonoBehaviour
 
         sequence.OnComplete(() =>
         {
+            collider.SetActive(true);
             StartDisparoCO();
         });
     }
@@ -124,8 +133,17 @@ public class BossBehaviour : MonoBehaviour
     }
     private void Die()
     {
-        Destroy(gameObject);
+        StopAllCoroutines();
+        StartCoroutine(WaitAndOpenCreditsPanel());
     }
+    public IEnumerator WaitAndOpenCreditsPanel()
+    {
+        yield return new WaitForSeconds(3f);
+        gameManager.GetComponent<UIManager>().OpenCreditsPanel();
+        Destroy(gameObject);
+
+    }
+
 
     public IEnumerator BurstCoroutine()
     {

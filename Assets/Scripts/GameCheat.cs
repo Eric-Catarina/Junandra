@@ -35,6 +35,11 @@ public class GameCheat : MonoBehaviour
             InfiniteLife();
         }
 
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            SpawnBoss();
+        }
+
     }
 
     public  void LoadScene1()
@@ -62,6 +67,11 @@ public class GameCheat : MonoBehaviour
         PlayerController player = GameObject.Find("Player").GetComponent<PlayerController>();
         player.IncreaseMaxHealth(9999);
         player.IncreaseHealth(9999);
+    }
+
+    public void SpawnBoss(){
+        GameObject.Find("EnemyGenerator").GetComponent<EnemyGenerator>().SpawnBossCheat();
+        GameObject.Find("EnemyGenerator").SetActive(false);
     }
 
 }

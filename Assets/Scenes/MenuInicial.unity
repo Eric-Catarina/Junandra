@@ -373,7 +373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: audioClips.Array.size
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: audioClips.Array.data[0]
@@ -391,6 +391,22 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[3]
       value: 
       objectReference: {fileID: 8300000, guid: b5461038bf0bcc2408ba58a15d1bd25d, type: 3}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4db88f5d2943f714b9efadc364eb8e22, type: 3}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[5]
+      value: 
+      objectReference: {fileID: 8300000, guid: fa19cdbb6fd93f544985eca89765ac86, type: 3}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[6]
+      value: 
+      objectReference: {fileID: 8300000, guid: 716f2b743c0803e46a4715053550bc14, type: 3}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[7]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6e8b821d07f961e46a3a4eca9c2fe5e8, type: 3}
     - target: {fileID: -1113536410261069194, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: sfxSlider
       value: 
@@ -411,6 +427,10 @@ PrefabInstance:
       propertyPath: generalSlider
       value: 
       objectReference: {fileID: 1274599289}
+    - target: {fileID: -228491349411015101, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -228491349411015101, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 334b756d1c5d93645a27864d7a363542, type: 3}
   m_Name: RavagerDefinition
   m_EditorClassIdentifier: 
-  currentHealth: 50
-  maxHealth: 50
-  movementSpeed: 7.5
+  currentHealth: 150
+  maxHealth: 150
+  movementSpeed: 6.5
   movesInSin: 0
   lookAtPlayer: 0
   movesTowardPlayer: 1

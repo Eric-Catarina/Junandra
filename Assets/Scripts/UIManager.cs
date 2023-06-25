@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
     public GameObject optionsPanel, creditsPanel;
     
     void Start(){
-        StartCoroutine(OpenCreditsPanelAfterDelay(135f)) ;
     }
     public void SetMusicSliderValue(float value)
     {

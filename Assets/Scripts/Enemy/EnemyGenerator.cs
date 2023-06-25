@@ -266,19 +266,6 @@ public class EnemyGenerator : MonoBehaviour
 
     }
 
-    public void SpawnBoss(float secondsToStart = 110)
-    {
-        currentEnemyWave = new EnemyWaveBuilder()
-                .WithPrefab(enemiesPrefabs[2])
-                .WithAmount(1)
-                .WithDelay(0)
-                .WithSecondsToStart(secondsToStart)
-                .WithXPosition(0.001f)
-                .Build();
-        SpawnMultipleEnemiesAfter(currentEnemyWave);
-
-    }
-
     // Randomly spawns a enemiesprefabs[3] in a random interval between 10 adn 20 seconds
     public void SpawnRandomEnemy(GameObject enemiePrefab, int amount = 1)
     {
@@ -290,6 +277,24 @@ public class EnemyGenerator : MonoBehaviour
                 .WithSecondsToStart(secondsToStart + 30)
                 .Build();
         SpawnMultipleEnemiesAfter(currentEnemyWave);
+    }
+
+    public void SpawnBoss(float secondsToStart = 110)
+    {
+        Debug.Log("Spawning boss");
+        currentEnemyWave = new EnemyWaveBuilder()
+                .WithPrefab(enemiesPrefabs[4])
+                .WithAmount(1)
+                .WithDelay(0)
+                .WithSecondsToStart(secondsToStart)
+                .WithXPosition(0.001f)
+                .Build();
+        SpawnMultipleEnemiesAfter(currentEnemyWave);
+
+    }
+
+    public void SpawnBossCheat(){
+        SpawnEnemy(enemiesPrefabs[4], 0.001f);
     }
 
 

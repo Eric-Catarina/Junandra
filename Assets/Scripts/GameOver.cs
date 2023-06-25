@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager");
+        gameManager.GetComponent<SoundManager>().PlayMusic(6);
     }
 
     public void BackToMenu()
