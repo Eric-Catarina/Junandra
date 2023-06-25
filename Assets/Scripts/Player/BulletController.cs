@@ -10,6 +10,7 @@ public class BulletController : MonoBehaviour
     public float lifeTimeCounter;
     public bool isEnemyBullet;
     public bool isPlayerBullet;
+    public bool isBossBullet;
 
     public float rotationSpeed;
     public GameObject player;
@@ -22,6 +23,9 @@ public class BulletController : MonoBehaviour
         player = GameObject.Find("Player");  
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));  
         impulseSource = GetComponent<CinemachineImpulseSource>();
+        if (isBossBullet){
+            transform.Rotate(0, 0, Random.Range(-10f, 10f));
+        }
     }
 
     // Update is called once per frame
@@ -42,6 +46,13 @@ public class BulletController : MonoBehaviour
 
         }
 
+        if (isBossBullet){
+            // Make bullet go down but with a little random angle error
+            transform.position -= transform.up * speed * Time.deltaTime;
+            //transform.position += transform.right * Random.Range(-1f, 1f) * speed * Time.deltaTime;
+            // Change its z Rotation a little bit randomly
+        }
+
         lifeTimeCounter -= Time.deltaTime;
         if (lifeTimeCounter <= 0)
         {
@@ -51,7 +62,8 @@ public class BulletController : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        if (collider.gameObject.CompareTag("Player") && isEnemyBullet){
+        if (collider.gameObject.CompareTag("Player") && isEnemyBullet ||
+            collider.gameObject.CompareTag("Player") && isBossBullet ){
             player.GetComponent<PlayerController>().TakeDamage(damage);
             gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.25f);   
         }

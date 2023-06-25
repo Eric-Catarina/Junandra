@@ -7,11 +7,16 @@ public class BossBehaviour : MonoBehaviour
 {
     public Animator animator;
     public AnimationCurve freadaDoSpawnCurve;
+    public GameObject bullet;
+    public GameObject player;
+    public Transform bulletSpawnPoint;
+    public float health;
     void Start()
     {
         animator = GetComponent<Animator>();
-        //EntradaDramatica();
+        player = GameObject.Find("Player");
         StartDisparoCO(0);
+        StartCoroutine(ShootCoroutine());
     }
 
     // Update is called once per frame
@@ -74,4 +79,46 @@ public class BossBehaviour : MonoBehaviour
         sequence.Join(transform.DOMoveX(-6.5f, 2f).SetEase(Ease.InOutSine));
 
     }
+
+    public IEnumerator ShootCoroutine()
+    {
+        while (true)
+        {
+            Shoot();
+            yield return new WaitForSeconds(1.5f);
+        }
+    }
+
+        public void Shoot()
+    {
+        Vector3 playerPosition = player.transform.position;
+        Vector3 direction = (playerPosition - transform.position).normalized;
+        GameObject bulletInstance = Instantiate(bullet, transform.position, transform.rotation);
+        bulletInstance.transform.position = bulletSpawnPoint.position;
+        BulletController bulletController = bulletInstance.GetComponent<BulletController>();
+        bulletController.isBossBullet = true;
+        bulletController.damage = 1;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(other.gameObject.GetComponent<BulletController>().damage);
+            Destroy(other.gameObject);
+        }
+    }
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+    
 }
