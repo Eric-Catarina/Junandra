@@ -963,7 +963,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &664925010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,6 +1127,10 @@ PrefabInstance:
       propertyPath: bulletFab
       value: 
       objectReference: {fileID: 484898785920674437, guid: 2ffcfcc8c450a764588923fac285255a, type: 3}
+    - target: {fileID: -5730370171356273759, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
+      propertyPath: criticalChance
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -2146826100620424466, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: damage
       value: 5
@@ -1226,6 +1230,10 @@ PrefabInstance:
     - target: {fileID: 7222594708988629973, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_CollisionDetection
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478797245274840901, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
+      propertyPath: criticalChanceIncrease
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 7564541382722793098, guid: cf964a449edecbb4888d489f12a87bc7, type: 3}
       propertyPath: m_Name
@@ -2999,7 +3007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194411, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7127996993908194413, guid: 274c7a650e7ecd241b88e1ddf175c8c4, type: 3}
       propertyPath: m_RootOrder

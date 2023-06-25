@@ -6,7 +6,7 @@ public class GunSystem : MonoBehaviour
     //Gun stats
     public float damage;
     public float spread, range, timeBetweenShots;
-    public float  bulletSpeed, attackSpeed, criticalChance, criticalDamage, explosionRadius,
+    public float  bulletSpeed, attackSpeed, criticalChance = 0.001f, criticalDamage = 2f, explosionRadius,
      bulletSlowMultiplier, bulletSlowDuration; 
     public bool hasSlowingShots, hasFreezingShots, hasExplosiveShots, hasTripleShots, hasCurveShots;
 
@@ -65,7 +65,17 @@ public class GunSystem : MonoBehaviour
         Vector3 direction = Vector3.up;
 
         GameObject bullet = Instantiate(bulletFab, bulletSpawnPoint, attackPoint.rotation);
-        bullet.GetComponent<BulletController>().damage = damage;
+        bool isCritical = Random.Range(0f, 1f) < criticalChance;
+        if (isCritical)
+        {
+            bullet.GetComponent<BulletController>().damage = damage * criticalDamage;
+            bullet.transform.localScale *= 2f;
+            bullet.GetComponent<BulletController>().speed = bullet.GetComponent<BulletController>().speed * 1.5f;
+        }
+        else
+        {
+            bullet.GetComponent<BulletController>().damage = damage;
+        }
 
         bulletsShot--;
 

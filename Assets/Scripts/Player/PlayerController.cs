@@ -48,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        StopAllCoroutines();
         currentHealth = maxHealth;
         gunSystem = GetComponent<GunSystem>();
         gunSystem.damage = damage;

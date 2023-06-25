@@ -56,9 +56,10 @@ public class BulletController : MonoBehaviour
             gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.25f);   
         }
 
+        // Check if collider have tag Item
+        if (collider.gameObject.CompareTag("Item") && !isEnemyBullet) return;
 
         gameManager.SpawnHitEffect(transform.position);
-        
         gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.05f);   
         Destroy(gameObject);
 

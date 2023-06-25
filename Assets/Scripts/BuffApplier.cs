@@ -11,8 +11,8 @@ public class BuffApplier : MonoBehaviour
     public float bulletSpeedMultiplier = 1.1f;
     public float damageMultiplier = 1.1f;
     public float attackSpeedMultiplier = 1.1f;
-    public float criticalChanceIncrease = 1.1f;
-    public float criticalDamageMultiplier = 1.1f;
+    public float criticalChanceIncrease = 0.1f;
+    public float criticalDamageMultiplier = 0.1f;
     public float radiusMultiplier = 1.1f;
     public float healRegenerationAmount = 0.1f;
 
@@ -53,13 +53,14 @@ public class BuffApplier : MonoBehaviour
 
     public void IncreaseCriticalChance()
     {
+        Debug.Log("Current chance: " + gunSystem.criticalChance + " increased by: " + criticalChanceIncrease);
         gunSystem.criticalChance += criticalChanceIncrease;
         player.ChangeBuffText("Critical Chance INCREASED!");
     }
 
     public void IncreaseCritical()
     {
-        gunSystem.criticalDamage *= criticalDamageMultiplier;
+        gunSystem.criticalDamage += criticalDamageMultiplier;
         player.ChangeBuffText("Critical Damage INCREASED!");
     }
 
@@ -78,7 +79,7 @@ public class BuffApplier : MonoBehaviour
     public void TripleShots()
     {
         gunSystem.hasTripleShots = true;
-        player.ChangeBuffText("Triple buffs!");
+        player.ChangeBuffText("Triple shots!");
     }
 
     public void IncreaseHealthRegeneration()
