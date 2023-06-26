@@ -78,6 +78,7 @@ public class BulletController : MonoBehaviour
         // Check if collider have tag Item
         if (collider.gameObject.CompareTag("Item") && !isEnemyBullet) return;
 
+        gameManager.GetComponent<SoundManager>().PlaySFX(8);
         gameManager.SpawnHitEffect(transform.position);
         gameManager.gameObject.GetComponent<CameraShakeManager>().CameraShake(impulseSource, 0.05f);   
         Destroy(gameObject);

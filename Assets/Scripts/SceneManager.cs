@@ -37,7 +37,7 @@ public class SceneManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 
-    public  void QuitGame()
+    public static  void QuitGame()
     {
         Application.Quit();
     }

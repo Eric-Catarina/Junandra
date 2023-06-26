@@ -373,7 +373,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: audioClips.Array.size
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: audioClips.Array.data[0]
@@ -407,6 +407,10 @@ PrefabInstance:
       propertyPath: audioClips.Array.data[7]
       value: 
       objectReference: {fileID: 8300000, guid: 6e8b821d07f961e46a3a4eca9c2fe5e8, type: 3}
+    - target: {fileID: -3709746671300501869, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
+      propertyPath: audioClips.Array.data[8]
+      value: 
+      objectReference: {fileID: 8300000, guid: f657192de25d1624ea633fb2fb5eadd6, type: 3}
     - target: {fileID: -1113536410261069194, guid: 97743e746fcc2814aa35fb200f40cc51, type: 3}
       propertyPath: sfxSlider
       value: 
