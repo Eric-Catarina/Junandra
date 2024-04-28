@@ -58,9 +58,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/junandra.loader.js";
       var config = {
-        dataUrl: buildUrl + "/junandra.data.gz",
-        frameworkUrl: buildUrl + "/junandra.framework.js.gz",
-        codeUrl: buildUrl + "/junandra.wasm.gz",
+        dataUrl: buildUrl + "/junandra.data",
+        frameworkUrl: buildUrl + "/junandra.framework.js",
+        codeUrl: buildUrl + "/junandra.wasm",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Junandra",
@@ -97,7 +97,7 @@
         canvas.style.height = "600px";
       }
 
-      canvas.style.background = "url('" + buildUrl + "/junandra.jpg.gz') center / cover";
+      canvas.style.background = "url('" + buildUrl + "/junandra.jpg') center / cover";
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
