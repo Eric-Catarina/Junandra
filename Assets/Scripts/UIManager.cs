@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class UIManager : MonoBehaviour
     public Slider musicSlider, sfxSlider, generalSlider;
 
     public GameObject optionsPanel, creditsPanel;
-    
+
     void Start(){
     }
     public void SetMusicSliderValue(float value)
@@ -40,11 +41,14 @@ public class UIManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         UpdateSliderValues();
         optionsPanel.SetActive(true);
+        optionsPanel.transform.DOLocalMoveX(0, 1f).SetEase(Ease.OutBounce);
+
     }
     public void CloseOptionsPanel()
     {
         optionsPanel = FindObjectOfType<OptionsPanel>(true).gameObject;
-        optionsPanel.SetActive(false);
+        optionsPanel.transform.DOLocalMoveX(2500, 2f).SetEase(Ease.OutBounce);
+
     }
 
     public void SetOptionsPanel(GameObject optionsPanel)
@@ -65,7 +69,11 @@ public class UIManager : MonoBehaviour
     {
         creditsPanel = FindObjectOfType<Credits>(true).gameObject;
         creditsPanel.SetActive(true);
+        // Slowly tweens the Pos Y of the credits panel to 0
+        creditsPanel.transform.DOLocalMoveY(0, 2f).SetEase(Ease.OutBounce);
+        
     }
+    
     public void CloseCreditsPanel()
     {
         creditsPanel = FindObjectOfType<Credits>(true).gameObject;

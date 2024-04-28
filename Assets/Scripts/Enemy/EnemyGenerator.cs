@@ -281,7 +281,6 @@ public class EnemyGenerator : MonoBehaviour
 
     public void SpawnBoss(float secondsToStart = 110)
     {
-        Debug.Log("Spawning boss");
         currentEnemyWave = new EnemyWaveBuilder()
                 .WithPrefab(enemiesPrefabs[4])
                 .WithAmount(1)
