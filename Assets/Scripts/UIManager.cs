@@ -47,7 +47,14 @@ public class UIManager : MonoBehaviour
     public void CloseOptionsPanel()
     {
         optionsPanel = FindObjectOfType<OptionsPanel>(true).gameObject;
-        optionsPanel.transform.DOLocalMoveX(2500, 2f).SetEase(Ease.OutBounce);
+        if (Time.timeScale != 1)
+        {
+            optionsPanel.SetActive(false);
+        }
+        else
+        {
+            optionsPanel.transform.DOLocalMoveX(2500, 2f).SetEase(Ease.OutBounce);
+        }
 
     }
 
