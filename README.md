@@ -1,2 +1,3 @@
 # Junandra
-Junandra is a shmup game inpired by some Hades mechanics
+Play the game here:
+https://eric-catarina.github.io/JunandraWebBuild/
